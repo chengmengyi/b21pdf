@@ -384,7 +384,9 @@ class DocumentListController extends BaseController {
       _ => null,
     };
     if (routeName == null) return;
-    AnalyticsService.instance.trackEvent(pointType: AnalyticsEvent.editorEntry);
+    AnalyticsService.instance.trackEvent(
+      pointType: AnalyticsEvent.editor_entry,
+    );
     AppNavigator.pushNamed(routeName: routeName, arguments: {'file': fileInfo});
   }
 

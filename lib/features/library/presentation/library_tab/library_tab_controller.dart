@@ -53,7 +53,7 @@ class LibraryTabController extends BaseController
 
   void onTabBarPressed() {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.fileFilterClick,
+      pointType: AnalyticsEvent.file_filter_click,
     );
   }
 
@@ -97,7 +97,7 @@ class LibraryTabController extends BaseController
           .requestPermission(permission: permission);
       if (result.isShowPermissionAd) {
         AnalyticsService.instance.trackEvent(
-          pointType: AnalyticsEvent.storageAuthClick,
+          pointType: AnalyticsEvent.storage_auth_click,
         );
         if (UserEligibilityService.instance.isEligibleUser) {
           AdService.instance.showCachedAd(

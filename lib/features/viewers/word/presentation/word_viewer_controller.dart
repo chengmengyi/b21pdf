@@ -58,7 +58,7 @@ class WordViewerController extends BaseController {
     if (!isEditing || isSaving) return;
     try {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.editorSaveClick,
+        pointType: AnalyticsEvent.editor_save_click,
       );
       await wordController.save();
       final path = fileInfo.path ?? '';

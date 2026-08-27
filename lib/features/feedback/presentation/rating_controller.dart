@@ -19,7 +19,9 @@ class RatingController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    AnalyticsService.instance.trackEvent(pointType: AnalyticsEvent.ratingPopV);
+    AnalyticsService.instance.trackEvent(
+      pointType: AnalyticsEvent.rating_pop_v,
+    );
   }
 
   void onStarPressed(int index) {
@@ -30,7 +32,9 @@ class RatingController extends BaseController {
   Future<void> onRateUsPressed() async {
     starCount = 5;
     update(<Object>[starBuilderId]);
-    AnalyticsService.instance.trackEvent(pointType: AnalyticsEvent.ratingPopC);
+    AnalyticsService.instance.trackEvent(
+      pointType: AnalyticsEvent.rating_pop_c,
+    );
     await _openGooglePlay();
   }
 

@@ -199,7 +199,7 @@ class StartupController extends BaseController
   Future<void> completeStartup() async {
     AdService.instance.preloadScene(AdScene.pr_user_use);
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.appLaunchResult,
+      pointType: AnalyticsEvent.app_launch_result,
     );
     var result = await ShortcutService.instance
         .handlePendingColdStartShortcut();

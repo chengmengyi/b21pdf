@@ -249,7 +249,7 @@ class PdfViewerScreenController extends BaseController {
     update();
     try {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.editorSaveClick,
+        pointType: AnalyticsEvent.editor_save_click,
       );
       List<int> bytes = await viewerController.saveDocument();
       if (penStrokes.isNotEmpty) {

@@ -18,7 +18,7 @@ class LanguageSelectionController extends BaseController {
   void onInit() {
     super.onInit();
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.langSelectView,
+      pointType: AnalyticsEvent.lang_select_view,
     );
     final initialLocale = LocaleUtilities.initialLocale();
     selectedLanguage = languageList.firstWhere(
@@ -63,7 +63,7 @@ class LanguageSelectionController extends BaseController {
 
   Future<void> onOkPressed() async {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.langSelectClick,
+      pointType: AnalyticsEvent.lang_select_click,
     );
     await AppTranslations.selectLanguage(selectedLanguage.locale);
     OnboardingCoordinator.instance.toPageOpenNotificationPermission();

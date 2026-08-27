@@ -18,14 +18,14 @@ class NotificationPermissionController extends BaseController {
   void onInit() {
     super.onInit();
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.pushGuideView,
+      pointType: AnalyticsEvent.push_guide_view,
       parameters: {"show_type": "secondary"},
     );
   }
 
   Future<void> onUpdatePressed() async {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.pushGuideClick,
+      pointType: AnalyticsEvent.push_guide_click,
       parameters: {"state": "turn_on"},
     );
     _waitingSettings = true;
@@ -35,7 +35,7 @@ class NotificationPermissionController extends BaseController {
 
   void onLaterPressed() {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.pushGuideClick,
+      pointType: AnalyticsEvent.push_guide_click,
       parameters: {"state": "later"},
     );
     _toNextPage();

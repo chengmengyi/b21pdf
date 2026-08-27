@@ -15,7 +15,7 @@ final class ImageImportService {
 
   Future<List<String>> scanDocuments({bool openResult = true}) async {
     if (openResult) {
-      AnalyticsService.instance.trackEvent(pointType: AnalyticsEvent.toolScan);
+      AnalyticsService.instance.trackEvent(pointType: AnalyticsEvent.tool_scan);
     }
     if (!await Permission.camera.isGranted) {
       final PermissionResult permissionResult = await PermissionService.instance
@@ -38,7 +38,7 @@ final class ImageImportService {
   Future<List<String>> pickImages({bool openResult = true}) async {
     if (openResult) {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.toolImageToPdf,
+        pointType: AnalyticsEvent.tool_image_to_pdf,
       );
     }
     final List<XFile> imageList = await ImagePicker().pickMultiImage();

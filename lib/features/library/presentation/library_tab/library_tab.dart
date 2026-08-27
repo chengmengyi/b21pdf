@@ -157,7 +157,7 @@ class _DashboardSectionState
                   style: TextStyle(fontSize: 14.sp, color: Color(0xff202326)),
                   onTap: () {
                     AnalyticsService.instance.trackEvent(
-                      pointType: AnalyticsEvent.searchClick,
+                      pointType: AnalyticsEvent.search_click,
                     );
                   },
                   decoration: InputDecoration(

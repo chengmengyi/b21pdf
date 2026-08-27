@@ -56,7 +56,7 @@ class ExcelViewerController extends BaseController {
     if (!isEditing || isSaving) return;
     try {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.editorSaveClick,
+        pointType: AnalyticsEvent.editor_save_click,
       );
       await excelController.save();
       final path = fileInfo.path ?? '';

@@ -57,12 +57,12 @@ class UserEligibilityService {
         requestAfCallback: RequestAfCallback(
           startRequestAf: () {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.afReq,
+              pointType: AnalyticsEvent.af_req,
             );
           },
           requestSuccess: (bool isAttributedUser, String afStr) {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.afSuc,
+              pointType: AnalyticsEvent.af_suc,
               parameters: {
                 //adj_user：【0】【1】，对应【黑名单用户】【自然量用户】
                 "af_user": isAttributedUser ? 1 : 0,
@@ -77,12 +77,12 @@ class UserEligibilityService {
           firstRequestAfB: () {},
           startAfSuccess: () {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.startAfSuc,
+              pointType: AnalyticsEvent.start_af_suc,
             );
           },
           startAfFail: (int code, String msg) {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.startAfFail,
+              pointType: AnalyticsEvent.start_af_fail,
               parameters: {"code": code, "msg": msg},
             );
           },
@@ -90,12 +90,12 @@ class UserEligibilityService {
         requestCloakCallback: RequestCloakCallback(
           startRequestCloak: () {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.cloakReq,
+              pointType: AnalyticsEvent.cloak_req,
             );
           },
           requestSuccess: (bool isAllowedUser) {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.cloakSuc,
+              pointType: AnalyticsEvent.cloak_suc,
               parameters: {
                 //cloak_user：【0】【1】，对应【黑名单用户】【自然量用户】
                 "cloak_user": isAllowedUser ? 1 : 0,
@@ -107,7 +107,7 @@ class UserEligibilityService {
         requestReferrerCallback: RequestReferrerCallback(
           startRequestReferrer: () {
             AnalyticsService.instance.trackEvent(
-              pointType: AnalyticsEvent.referrerReq,
+              pointType: AnalyticsEvent.referrer_req,
             );
           },
           requestSuccess: (String referrer) {
@@ -137,7 +137,7 @@ class UserEligibilityService {
         onUploadSessionRisk: (Map<String, int> riskSummary) {},
         onPdfRiskDetected: (FlutterPdfRiskControlTag riskTag) {
           AnalyticsService.instance.trackEvent(
-            pointType: AnalyticsEvent.riskControl,
+            pointType: AnalyticsEvent.risk_control,
             //type：vpn、root、sim、simulator、googleplay、developer、ip
             parameters: {"risk_type": riskTag.name},
           );
@@ -216,18 +216,18 @@ class UserEligibilityService {
           }
         }
         AnalyticsService.instance.trackEvent(
-          pointType: AnalyticsEvent.refferSuc,
+          pointType: AnalyticsEvent.reffer_suc,
           parameters: {"reffer_info": referrer, "reffer_user": referrerUser},
         );
       } else {
         AnalyticsService.instance.trackEvent(
-          pointType: AnalyticsEvent.refferSuc,
+          pointType: AnalyticsEvent.reffer_suc,
           parameters: {"reffer_info": referrer, "reffer_user": "list is empty"},
         );
       }
     } catch (e) {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.refferSuc,
+        pointType: AnalyticsEvent.reffer_suc,
         parameters: {"reffer_info": referrer, "reffer_user": "error"},
       );
     }

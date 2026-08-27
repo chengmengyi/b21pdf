@@ -359,7 +359,7 @@ class AdService implements FlutterPdfAdListener {
       );
       if (!hasCachedAd) {
         AnalyticsService.instance.trackEvent(
-          pointType: AnalyticsEvent.showAdNoCache,
+          pointType: AnalyticsEvent.show_ad_no_cache,
           parameters: {
             "ad_context": adScene.name,
             "ad_pos_id": adPosId.name,
@@ -412,7 +412,7 @@ class AdService implements FlutterPdfAdListener {
     required AdPlacement adPosId,
   }) {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adChance,
+      pointType: AnalyticsEvent.ad_chance,
       parameters: {"ad_context": adScene.name, "ad_pos_id": adPosId.name},
     );
   }
@@ -519,7 +519,7 @@ class AdService implements FlutterPdfAdListener {
       return;
     }
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adClick,
+      pointType: AnalyticsEvent.ad_click,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -552,7 +552,7 @@ class AdService implements FlutterPdfAdListener {
       return;
     }
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adClose,
+      pointType: AnalyticsEvent.ad_close,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -590,11 +590,11 @@ class AdService implements FlutterPdfAdListener {
     }
     if (revenue >= 0.01) {
       FirebaseService.instance.logAnalyticsEvent(
-        name: AnalyticsEvent.prTotal001Revenue.wireName,
+        name: AnalyticsEvent.pr_total_001_revenue.name,
         parameters: {"currency": currencyCode, "value": revenue},
       );
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.prTotal001Revenue,
+        pointType: AnalyticsEvent.pr_total_001_revenue,
         parameters: {
           "ad_context": adPlacement.name,
           "ad_pos_id": adPosId.name,
@@ -620,11 +620,11 @@ class AdService implements FlutterPdfAdListener {
     FirebaseService.instance.logFacebookPurchase(revenue, currencyCode);
 
     FirebaseService.instance.logAnalyticsEvent(
-      name: AnalyticsEvent.adImpressionRevenue.wireName,
+      name: AnalyticsEvent.ad_impression_revenue.name,
       parameters: {"currency": currencyCode, "value": revenue},
     );
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adImpressionRevenue,
+      pointType: AnalyticsEvent.ad_impression_revenue,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_pos_id": adPosId.name,
@@ -661,7 +661,7 @@ class AdService implements FlutterPdfAdListener {
       return;
     }
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adLoadFail,
+      pointType: AnalyticsEvent.ad_load_fail,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -680,7 +680,7 @@ class AdService implements FlutterPdfAdListener {
       return;
     }
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adRequest,
+      pointType: AnalyticsEvent.ad_request,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -702,7 +702,7 @@ class AdService implements FlutterPdfAdListener {
       return;
     }
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adLoadSuccess,
+      pointType: AnalyticsEvent.ad_load_success,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -730,7 +730,7 @@ class AdService implements FlutterPdfAdListener {
       return;
     }
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adShowFail,
+      pointType: AnalyticsEvent.ad_show_fail,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -762,7 +762,7 @@ class AdService implements FlutterPdfAdListener {
       adPosId: adPosId,
     );
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.adShow,
+      pointType: AnalyticsEvent.ad_show,
       parameters: {
         "ad_context": adPlacement.name,
         "ad_format": adInfo.adType,
@@ -794,7 +794,7 @@ class AdService implements FlutterPdfAdListener {
   @override
   void onAdmobInitialized() {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.sdkInitialization,
+      pointType: AnalyticsEvent.sdk_initialization,
     );
   }
 
@@ -807,7 +807,7 @@ class AdService implements FlutterPdfAdListener {
   @override
   void onUmpConsentCanRequestAds(bool canRequestAds) {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.canRequestAds,
+      pointType: AnalyticsEvent.can_request_ads,
       parameters: {"canRequest": canRequestAds ? 1 : 0},
     );
   }
@@ -815,7 +815,7 @@ class AdService implements FlutterPdfAdListener {
   @override
   void onUmpConsentFlowComplete(UmpConsentResult result) {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.consentStatusUpdate,
+      pointType: AnalyticsEvent.consent_status_update,
       parameters: {
         "countryCode": result.countryCode,
         "requiresCmpByLocale": result.requiresCmpByLocale,
@@ -832,7 +832,7 @@ class AdService implements FlutterPdfAdListener {
   @override
   void onUmpConsentFlowStart(String countryCode, bool requiresCmpByLocale) {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.consentFlowTrigger,
+      pointType: AnalyticsEvent.consent_flow_trigger,
       parameters: {
         "countryCode": countryCode,
         "requiresCmp": requiresCmpByLocale,
@@ -843,19 +843,21 @@ class AdService implements FlutterPdfAdListener {
   @override
   void onUmpConsentFormShow() {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.consentUiShow,
+      pointType: AnalyticsEvent.consent_ui_show,
     );
   }
 
   @override
   void onUmpFormLoad() {
-    AnalyticsService.instance.trackEvent(pointType: AnalyticsEvent.umpFormLoad);
+    AnalyticsService.instance.trackEvent(
+      pointType: AnalyticsEvent.ump_form_load,
+    );
   }
 
   @override
   void onUmpFormRequest() {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.umpFormRequest,
+      pointType: AnalyticsEvent.ump_form_request,
     );
   }
 

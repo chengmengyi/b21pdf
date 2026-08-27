@@ -36,7 +36,7 @@ class HomeController extends BaseController {
   void onInit() {
     super.onInit();
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.pageView,
+      pointType: AnalyticsEvent.page_view,
       parameters: {"page": "file"},
     );
     NotificationService.instance.initialize(requestPermission: true);
@@ -68,12 +68,12 @@ class HomeController extends BaseController {
     }
     if (tabIndex == 0) {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.pageView,
+        pointType: AnalyticsEvent.page_view,
         parameters: {"page": "file"},
       );
     } else if (tabIndex == 1) {
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.pageView,
+        pointType: AnalyticsEvent.page_view,
         parameters: {"page": "tools"},
       );
     }

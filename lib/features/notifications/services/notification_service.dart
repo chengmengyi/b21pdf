@@ -46,11 +46,11 @@ class NotificationService {
     if (requestPermission) {
       await Permission.notification.request();
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.storageSystemResult,
+        pointType: AnalyticsEvent.storage_system_result,
         parameters: {"open": (await hasNotificationPermission()) ? 1 : 0},
       );
       AnalyticsService.instance.trackEvent(
-        pointType: AnalyticsEvent.pushGuideView,
+        pointType: AnalyticsEvent.push_guide_view,
         parameters: {"show_type": "system"},
       );
     }
@@ -309,7 +309,7 @@ class NotificationService {
 
   void _trackNotificationClick(String? eventSource) {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.informC,
+      pointType: AnalyticsEvent.inform_c,
       parameters: {'sourse': eventSource},
     );
   }

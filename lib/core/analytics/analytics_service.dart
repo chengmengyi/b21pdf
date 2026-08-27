@@ -104,7 +104,7 @@ class AnalyticsService {
     await _sendWithRetry(
       body: requestBody,
       eventType: 'point',
-      eventName: pointType.wireName,
+      eventName: pointType.name,
     );
   }
 
@@ -114,7 +114,7 @@ class AnalyticsService {
     Map<String, dynamic>? userGroup,
   }) async {
     final Map<String, dynamic> requestBody = await _buildCommonPayload();
-    requestBody['threaten'] = pointType.wireName;
+    requestBody['threaten'] = pointType.name;
     parameters?.forEach((String key, dynamic value) {
       requestBody['$key~glory'] = value;
     });

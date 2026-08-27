@@ -37,7 +37,7 @@ class DocumentSortController extends BaseController {
 
   void onSortPressed(SortType type) {
     AnalyticsService.instance.trackEvent(
-      pointType: AnalyticsEvent.fileSortChange,
+      pointType: AnalyticsEvent.file_sort_change,
       parameters: {"sort_type": type.name},
     );
     AppNavigator.back<SortType>(result: type);
