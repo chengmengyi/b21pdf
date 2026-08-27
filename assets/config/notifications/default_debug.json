@@ -1,0 +1,137 @@
+{
+  "enabled": true,
+  "first_send_delay_minutes": 1,
+  "notification_interval_minutes": 0,
+  "notification_total_limit": 10000,
+  "refresh_enabled": true,
+  "refresh_interval_seconds": 2,
+  "refresh_duration_seconds": 5,
+  "fcm_enabled": true,
+  "scheduled_enabled": true,
+  "broadcast_enabled": true,
+  "media_enabled": true,
+  "persistent_enabled": true,
+  "floating_window_enabled": false,
+  "fcm_topic_arr": [
+    {
+      "topic_name": "B17_pdf_fcm"
+    }
+  ],
+  "scheduled_notification_arr": [
+    {
+      "channel_name": "daily_reminder1",
+      "first_delay": 1,
+      "interval": 1,
+      "copy_pool": [
+        {
+          "title": "111File size reduced",
+          "body": "Your tiny PDF is ready to view！",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "111Need to sign a document?",
+          "body": "Add your signature to any PDF in just a few taps.",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "111Convert files on the go",
+          "body": "Turn images, Word docs, or spreadsheets into PDFs quickly.",
+          "image": "https://pbs.twimg.com/media/HO8SB6AbsAAhImD?format=jpg&name=large"
+        }
+      ]
+    },
+    {
+      "channel_name": "daily_reminder2",
+      "first_delay": 1,
+      "interval": 2,
+      "copy_pool": [
+        {
+          "title": "222File size reduced",
+          "body": "Your tiny PDF is ready to view！",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "222Need to sign a document?",
+          "body": "Add your signature to any PDF in just a few taps.",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "222Convert files on the go",
+          "body": "Turn images, Word docs, or spreadsheets into PDFs quickly.",
+          "image": "https://pbs.twimg.com/media/HO8SB6AbsAAhImD?format=jpg&name=large"
+        }
+      ]
+    }
+  ],
+  "broadcast_config": {
+    "send_interval_minutes": 0,
+    "send_limit": 100,
+    "unlock_enabled": true,
+    "exit_background_enabled": true,
+    "file_listener_enabled": true,
+    "power_connection_enabled": true,
+    "reboot_enabled": true,
+    "ad_click_enabled": true,
+    "home_key_enabled": true,
+    "recent_apps_key_enabled": true
+  },
+  "media_notification_arr": [
+    {
+      "channel_name": "media_reminder111",
+      "first_delay": 0,
+      "interval": 0,
+      "copy_pool": [
+        {
+          "title": "m1File size reduced",
+          "body": "Your tiny PDF is ready to view！",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "m1Need to sign a document?",
+          "body": "Add your signature to any PDF in just a few taps.",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "m1Convert files on the go",
+          "body": "Turn images, Word docs, or spreadsheets into PDFs quickly.",
+          "image": "https://pbs.twimg.com/media/HO8SB6AbsAAhImD?format=jpg&name=large"
+        }
+      ]
+    },
+    {
+      "channel_name": "media_reminder222",
+      "first_delay": 0,
+      "interval": 0,
+      "copy_pool": [
+        {
+          "title": "m2File size reduced",
+          "body": "Your tiny PDF is ready to view！",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "m2Need to sign a document?",
+          "body": "Add your signature to any PDF in just a few taps.",
+          "image": "https://pbs.twimg.com/media/HO8SB6ibQAAEFud?format=jpg&name=large"
+        },
+        {
+          "title": "m2Convert files on the go",
+          "body": "Turn images, Word docs, or spreadsheets into PDFs quickly.",
+          "image": "https://pbs.twimg.com/media/HO8SB6AbsAAhImD?format=jpg&name=large"
+        }
+      ]
+    }
+  ],
+  "persistent_config": {
+    "update_interval_minutes": 30,
+    "action_url": "app://home",
+    "allow_dismiss": false
+  },
+  "floating_window_config": {
+    "only_send_floating_window": false,
+    "trigger_with_scheduled": true,
+    "trigger_with_broadcast": true,
+    "standalone_enabled": false,
+    "standalone_interval_minutes": 60,
+    "standalone_daily_limit": 8
+  }
+}

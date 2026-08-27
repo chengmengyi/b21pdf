@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "841796886744",
+    "project_id": "boomtest-b4349",
+    "storage_bucket": "boomtest-b4349.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841796886744:android:8b9d8bf7a250c88eceb7ad",
+        "android_client_info": {
+          "package_name": "com.test.boom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj1dHVW3rmpiU4B1kvpMNOOvJStN9nplQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

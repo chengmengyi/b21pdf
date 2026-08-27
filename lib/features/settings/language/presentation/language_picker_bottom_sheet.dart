@@ -1,0 +1,123 @@
+import 'package:b21pdf/features/settings/language/presentation/language_picker_controller.dart';
+import 'package:b21pdf/features/settings/language/supported_locales.dart';
+import 'package:b21pdf/core/navigation/app_navigator.dart';
+import 'package:b21pdf/core/presentation/controller_widget.dart';
+import 'package:b21pdf/shared/widgets/asset_picture_view.dart';
+import 'package:b21pdf/shared/widgets/localized_text_view.dart';
+import 'package:b21pdf/shared/widgets/media_padding_view.dart';
+import 'package:b21pdf/shared/widgets/tap_guard_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+class LanguagePickerBottomSheet
+    extends ControllerWidget<LanguagePickerController> {
+  const LanguagePickerBottomSheet({super.key});
+
+  @override
+  LanguagePickerController createController() => LanguagePickerController();
+  @override
+  Widget buildContent(
+    BuildContext context,
+    LanguagePickerController controller,
+  ) => GetBuilder<LanguagePickerController>(
+    init: controller,
+    global: false,
+    builder: (controller) => Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16.w),
+          topRight: Radius.circular(16.w),
+        ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildTitleSection(),
+          _buildContentSection(controller),
+          SizedBox(height: 12.h),
+        ],
+      ),
+    ),
+  );
+
+  Widget _buildContentSection(LanguagePickerController controller) => Container(
+    width: double.infinity,
+    height: 448.h,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(12.w),
+      border: Border.all(width: 0.5.w, color: const Color(0xffE0E3EA)),
+    ),
+    child: MediaPaddingView(
+      child: ListView.builder(
+        controller: controller.languageScrollController,
+        itemCount: controller.languageList.length,
+        itemBuilder: (context, index) {
+          final SupportedLocale item = controller.languageList[index];
+          final selected = controller.isSelected(item);
+          return TapGuardView(
+            onPressed: () => controller.onLanguagePressed(item),
+            child: SizedBox(
+              height: 56.h,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Row(
+                  children: [
+                    AssetPictureView(item.icon, width: 32.w, height: 32.w),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: LocalizedTextView(
+                        item.name,
+                        fontSize: 14.sp,
+                        color: const Color(0xff060E23),
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
+                    AssetPictureView(
+                      selected
+                          ? 'common/radio_selected'
+                          : 'common/radio_unselected',
+                      width: 24.w,
+                      height: 24.w,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    ),
+  );
+
+  Widget _buildTitleSection() => SizedBox(
+    width: double.infinity,
+    height: 56.h,
+    child: Stack(
+      children: [
+        Align(
+          child: LocalizedTextView(
+            'App Language'.tr,
+            fontSize: 20.sp,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: TapGuardView(
+            onPressed: AppNavigator.back,
+            child: AssetPictureView(
+              'navigation/close',
+              width: 24.w,
+              height: 24.w,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
