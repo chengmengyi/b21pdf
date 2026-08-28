@@ -48,6 +48,20 @@ class OverlayService {
     } catch (_) {}
   }
 
+  Future<bool> hasOverlayPermission() async {
+    if (!Platform.isAndroid) return true;
+    return _plugin.checkOverlayPermission();
+  }
+
+  Future<bool> requestOverlayPermission() async {
+    if (!Platform.isAndroid) return true;
+    return _plugin.requestOverlayPermission(
+      title: 'Almost there! Unlock your full potential:'.tr,
+      desc: 'Find {n} below and toggle the switch to ON.'.tr,
+      overlayPermissionGuideLayout: 'overlay_layout',
+    );
+  }
+
   Future<void> showProgressOverlay({String taskId = defaultTaskId}) async {
     if (!Platform.isAndroid || !await _plugin.checkOverlayPermission()) return;
     await _plugin.showProcessingOverlay(
@@ -79,30 +93,21 @@ class OverlayService {
 
   void closeProgressOverlay() => _plugin.closeProcessingOverlay();
 
-  Future<String> _encrypt(String value) => _plugin.encryptReflectionString(
-    secret: AppConfig.secretKey,
-    value: value,
-  );
-
   Future<TimerOverlayReflectionConfig> _buildTimerReflectionConfig() async {
     return TimerOverlayReflectionConfig(
       secret: AppConfig.secretKey,
-      settingsClass: await _encrypt('android.provider.Settings'),
-      canDrawOverlaysMethod: await _encrypt('canDrawOverlays'),
-      contextGetSystemServiceMethod: await _encrypt('getSystemService'),
-      windowServiceName: await _encrypt('window'),
-      windowManagerLayoutParamsClass: await _encrypt(
-        r'android.view.WindowManager$LayoutParams',
-      ),
-      viewGroupLayoutParamsClass: await _encrypt(
-        r'android.view.ViewGroup$LayoutParams',
-      ),
-      windowManagerClass: await _encrypt('android.view.WindowManager'),
-      addViewMethod: await _encrypt('addView'),
-      removeViewMethod: await _encrypt('removeView'),
-      gravityField: await _encrypt('gravity'),
-      xField: await _encrypt('x'),
-      yField: await _encrypt('y'),
+      settingsClass: "v1:dAEFsfP2edryQkeq:yHRx65uFGONzJaP0159bSApAwHYMIxSJWNOwCtQ80/LenhXim6GppJ8=",
+      canDrawOverlaysMethod: "v1:g6VvlG8n9LxLY2hs:sdyiPWrSZU/LCnV7Ud3W6TX78419p8l7T6jwHG2W0A==",
+      contextGetSystemServiceMethod: "v1:yVyVhO5TNCgo04Qw:FRPK76iUJ89ovdwSuvmo/1fHEEiklHnIob3C6Kr3flE=",
+      windowServiceName: "v1:7NC1ephQZiVDqvyv:cb2phGOndkLs2oSZAr8dUXW/rLPNEA==",
+      windowManagerLayoutParamsClass: "v1:bRD0QYhdVpudm/C8:wJnajmKhVtWYwAjCGI/DlSH+1g4QwaTrQyx9dzmj/xiAqYN3rEeBUKA3uRke+HsVYBPZRlwVWQ==",
+      viewGroupLayoutParamsClass: "v1:Xx0XubpxA3b2FeoG:fdst/jP4LFBOROhbAXDNsXg6bAIpU1D1SbVgc/UnGIm+PsDJzbRHlaj52ggAJSSOHcbt",
+      windowManagerClass: "v1:ELN+pglL2kBneUIj:s+bgOAG5wha3KpWsIwfNLiXAuG5Le/MsU/bj27wWvv1K7QL3wLNUfMJL",
+      addViewMethod: "v1:kof9soyPjviwQ/CJ:miLYJJte20sO5UCmQqg/hxpE0he8NRg=",
+      removeViewMethod: "v1:knjaJPiyeTpJDvuJ:DXzWr888Oc1uS3pFInJ4dQtUOCt57qw20uo=",
+      gravityField: "v1:Z2u+SRrQiZLUAtYe:S2ki8zxr5b6zn+8VEVHeIqBvI6B2IQ4=",
+      xField: "v1:ISaP4Nkkv9CxZ/fa:+ok94P0MIX6dOEMLyGn9wFM=",
+      yField: "v1:SEaESyk+LO+ByN2c:MvEDS3vzfcFmuCstyUv5Cgs=",
     );
   }
 
@@ -110,23 +115,19 @@ class OverlayService {
   _buildProcessingReflectionConfig() async {
     return ProcessingOverlayReflectionConfig(
       secret: AppConfig.secretKey,
-      settingsClass: await _encrypt('android.provider.Settings'),
-      canDrawOverlaysMethod: await _encrypt('canDrawOverlays'),
-      contextGetSystemServiceMethod: await _encrypt('getSystemService'),
-      windowServiceName: await _encrypt('window'),
-      windowManagerLayoutParamsClass: await _encrypt(
-        r'android.view.WindowManager$LayoutParams',
-      ),
-      viewGroupLayoutParamsClass: await _encrypt(
-        r'android.view.ViewGroup$LayoutParams',
-      ),
-      windowManagerClass: await _encrypt('android.view.WindowManager'),
-      addViewMethod: await _encrypt('addView'),
-      removeViewMethod: await _encrypt('removeView'),
-      updateViewLayoutMethod: await _encrypt('updateViewLayout'),
-      gravityField: await _encrypt('gravity'),
-      xField: await _encrypt('x'),
-      yField: await _encrypt('y'),
+      settingsClass: "v1:EAZMRGFKYMyIUckE:fiQzEbp/e7mjISeL1VD3lTzb/KhA6f977se+wvAyQdDD7Hj06ljOatE=",
+      canDrawOverlaysMethod: "v1:MJUvHOKYqw07CS/3:f3AVdzxeXWMbPgweDuWk/mkEHo0GUvJ2CLcvkMyMRw==",
+      contextGetSystemServiceMethod: "v1:tCGei+N8ttmOKeJF:qrb86VvdF//B4tVww8HGBxS8X4K1xdyCxldbaD1M64E=",
+      windowServiceName: "v1:xZz4CTvV1AbTYnlI:k1q1aFZqfDnTanLsMhtdOfHSax+jNQ==",
+      windowManagerLayoutParamsClass: "v1:SaYuVWaMy0EwbGHG:WAC5/hmM6PkLoacBqFzM6tMurWf5+kQM57B5dUKArW4NOio9128Lrlp8jqRHb/omijpgUOnvKA==",
+      viewGroupLayoutParamsClass: "v1:/wNAjuiVtU7CFYiB:MyVKSihIux0k0CUKl3/osDzY9ZsBZQJMvBm59MZ91nEWwLhS3lmLsTqR0M7WIKx8gnfU",
+      windowManagerClass: "v1:T5TeIWLHNjB02PoU:msAXGLj5sizQBz/3XKP7f6bE93xCA90bUs/2kn1/jtz+7EWnUE6U/Dt0",
+      addViewMethod: "v1:z8s73dnYbAxnIN1N:EnzeuR2o2v5D9rDBHHKpW4ji9MXYz3I=",
+      removeViewMethod: "v1:P7B2qQY9iwNF4K0r:4sj0OLZjLvJ3Ovc1dwhlP3kDglYlzPacwJE=",
+      updateViewLayoutMethod: "v1:Ue2Ebqg5yhciK4hx:dR7SXJRT5goCCDnF6GCDUJcHRwxBH+8swggUcFHN3Nc=",
+      gravityField: "v1:alAeJLRsqYOgBv9Y:2Hu+eTVmfylHGaeEs4iwdXohpWvumtM=",
+      xField: "v1:12PAjdtJm2OI5OYR:+R/vHuDiy8ZeDlCkP23h/vM=",
+      yField: "v1:VvocWjkIjzAMkSJw:gdl8SIxhRW/rbq9wCnR0HhY=",
     );
   }
 }

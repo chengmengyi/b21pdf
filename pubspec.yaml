@@ -63,7 +63,7 @@ dependencies:
   sqflite: 2.4.2
   dio: 5.8.0+1
   flutter_custom_facebook: 0.0.5
-  flutter_boom_notification_plugins: 0.0.2
+  flutter_boom_notification_plugins: 0.0.3
   flutter_add_widget_plugins: 0.0.3
   url_launcher: 6.3.2
   visibility_detector: 0.4.0+2

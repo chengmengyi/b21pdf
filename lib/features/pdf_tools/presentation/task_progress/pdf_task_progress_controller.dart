@@ -5,6 +5,7 @@ import 'package:b21pdf/core/navigation/app_routes.dart';
 import 'package:b21pdf/core/navigation/app_navigator.dart';
 import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:b21pdf/core/presentation/base_controller.dart';
+import 'package:b21pdf/features/settings/overlay_permission/overlay_permission_prompt.dart';
 import 'package:flutter_preview_file/flutter_preview_file.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,22 @@ class PdfTaskProgressController extends BaseController {
   @override
   void onReady() {
     super.onReady();
-    _generatePdf();
+    unawaited(_checkOverlayPermissionAndGeneratePdf());
+  }
+
+  Future<void> _checkOverlayPermissionAndGeneratePdf() async {
+    if (imagePaths.isEmpty) return;
+    if (await OverlayService.instance.hasOverlayPermission()) {
+      await _generatePdf();
+      return;
+    }
+    await AppNavigator.showBottomSheet<void>(
+      dismissible: false,
+      child: OverlayPermissionPrompt(
+        onSettingsComplete: _generatePdf,
+        onLater: _generatePdf,
+      ),
+    );
   }
 
   Future<void> _generatePdf() async {

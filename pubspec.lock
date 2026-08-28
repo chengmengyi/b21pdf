@@ -386,10 +386,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_boom_notification_plugins
-      sha256: eabdbc4ccedeb953401b49e98af77c66f8dd07272fda02df2f5426d8b704c4f8
+      sha256: "1b1330b452bcbfa7a70aee748fee05d370d9554e6c2efdfc1041b8fde4b2a7ac"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   flutter_check_af_new:
     dependency: "direct main"
     description:

@@ -174,11 +174,16 @@ class _LibraryTabState
           alignment: Alignment.bottomRight,
           children: [
             AssetPictureView("home/home_files_bg", width: 28.w, height: 20.w),
-            LocalizedTextView(
-              "Files".tr,
-              fontSize: 32.sp,
-              color: Color(0xff07080E),
-              fontWeight: FontWeight.bold,
+            TapGuardView(
+              onPressed: (){
+                controller.runDebugActions();
+              },
+              child: LocalizedTextView(
+                "Files".tr,
+                fontSize: 32.sp,
+                color: Color(0xff07080E),
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

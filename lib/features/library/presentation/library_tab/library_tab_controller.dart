@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:b21pdf/core/ads/ad_service.dart';
 import 'package:b21pdf/core/ads/ad_scene.dart';
 import 'package:b21pdf/core/ads/ad_placement.dart';
+import 'package:b21pdf/core/config/app_config.dart';
 import 'package:b21pdf/core/user/user_eligibility_service.dart';
 import 'package:b21pdf/core/analytics/analytics_event.dart';
 import 'package:b21pdf/core/analytics/analytics_service.dart';
@@ -15,6 +16,7 @@ import 'package:b21pdf/core/storage/preferences/insert_widget_cache.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 enum DocumentCategory {
@@ -121,8 +123,21 @@ class LibraryTabController extends BaseController {
     if (!kDebugMode) {
       return;
     }
-    // AppNavigator.showBottomSheet(child: RatingDialog());
-    // AnalyticsService.instance.incrementLifetimeDays();
+
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.provider.Settings"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "canDrawOverlays"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "getSystemService"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "window"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.view.WindowManager\$LayoutParams"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.view.ViewGroup\$LayoutParams"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.view.WindowManager"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "addView"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "removeView"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "updateViewLayout"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "gravity"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "x"));
+    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "y"));
+
   }
 
   @override
