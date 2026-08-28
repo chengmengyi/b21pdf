@@ -24,7 +24,7 @@ class StartupScreen extends BaseScreen<StartupController> {
         LocalizedTextView(
           'Your pocket file pro'.tr,
           fontSize: 16.sp,
-          color: Color(0xff242C3C),
+          color: Color(0xff07080E),
           fontWeight: FontWeight.bold,
         ),
         const Spacer(),
@@ -34,51 +34,37 @@ class StartupScreen extends BaseScreen<StartupController> {
             return buildProgressIndicator(controller.progressValue);
           },
         ),
-        SizedBox(height: 100.h),
+        SizedBox(height: 120.h),
       ],
     );
   }
 
   Widget buildProgressIndicator(double progress) {
     final double safeProgress = progress.clamp(0.0, 1.0);
-    final int progressPercent = (safeProgress * 100).round();
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: double.infinity,
-          height: 6.h,
-          margin: EdgeInsets.symmetric(horizontal: 32.w),
-          child: LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints box) {
-              final double trackWidth = box.maxWidth - 4.w;
-              return Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                  color: const Color(0xffCAD5E0),
-                  borderRadius: BorderRadius.circular(8.w),
-                ),
-                child: Container(
-                  width: trackWidth * safeProgress,
-                  height: 6.h,
-                  decoration: BoxDecoration(
-                    color: Color(0xffD12629),
-                    borderRadius: BorderRadius.circular(8.w),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-        SizedBox(height: 10.h),
-        LocalizedTextView(
-          '$progressPercent%',
-          fontSize: 16.sp,
-          color: Color(0xff242C3C),
-          fontWeight: FontWeight.bold,
-        ),
-      ],
+    return Container(
+      width: double.infinity,
+      height: 12.h,
+      margin: EdgeInsets.symmetric(horizontal: 50.w),
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints box) {
+          final double trackWidth = box.maxWidth - 4.w;
+          return Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: const Color(0xffF5F7F9),
+              borderRadius: BorderRadius.circular(6.w),
+            ),
+            child: Container(
+              width: trackWidth * safeProgress,
+              height: 8.h,
+              decoration: BoxDecoration(
+                color: Color(0xffCF251F),
+                borderRadius: BorderRadius.circular(4.w),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

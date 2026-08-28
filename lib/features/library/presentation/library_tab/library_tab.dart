@@ -6,7 +6,6 @@ import 'package:b21pdf/features/library/presentation/library_tab/library_tab_con
 import 'package:b21pdf/core/presentation/base_tab.dart';
 import 'package:b21pdf/shared/widgets/asset_picture_view.dart';
 import 'package:b21pdf/shared/widgets/localized_text_view.dart';
-import 'package:b21pdf/shared/widgets/tab_view.dart';
 import 'package:b21pdf/shared/widgets/tap_guard_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,30 +27,20 @@ class _DashboardSectionState
 
   @override
   Widget buildContent(BuildContext context, LibraryTabController controller) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        AssetPictureView(
-          "home/library_header_background",
-          width: double.infinity,
-          height: 232.h,
+    return GetBuilder<LibraryTabController>(
+      init: controller,
+      builder: (controller) => Container(
+        padding: EdgeInsets.only(left: 16.w, right: 16.w),
+        child: Column(
+          children: [
+            _buildHeader(controller),
+            _tabWidget(controller),
+            if (controller.showAddWidget) _addSmallWidget(controller),
+            SizedBox(height: 12.h),
+            _buildTabPages(controller),
+          ],
         ),
-        GetBuilder<LibraryTabController>(
-          init: controller,
-          builder: (controller) => Container(
-            padding: EdgeInsets.only(left: 16.w, right: 16.w),
-            child: Column(
-              children: [
-                _buildHeader(controller),
-                _tabWidget(controller),
-                if (controller.showAddWidget) _addSmallWidget(controller),
-                SizedBox(height: 12.h),
-                _buildTabPages(controller),
-              ],
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 
@@ -66,12 +55,53 @@ class _DashboardSectionState
 
   _tabWidget(LibraryTabController controller) => SizedBox(
     width: double.infinity,
-    height: 40.h,
-    child: TabView(
-      tabController: controller.tabController,
-      onTap: (int index) {
-        controller.onTabBarPressed();
+    height: 28.h,
+    child: ListView.separated(
+      itemCount: DocumentCategory.values.length,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) {
+        var type = DocumentCategory.values[index];
+        final b16SelectedQxmvza = index == b16controllerVqmxze.b16SelectedTabIndexQmvnza;
+        return B16TapGuardViewMfwqke(
+          b16OnPressedJkcxwu: () {
+            b16controllerVqmxze.clickTabItem(type);
+          },
+          b16ChildHnqvsa: Container(
+            padding: EdgeInsets.only(left: 12.w, right: 12.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18.w),
+              color: b16SelectedQxmvza ? null : Colors.white,
+              gradient: b16SelectedQxmvza
+                  ? LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
+              )
+                  : null,
+              border: Border.all(width: 1.w, color: Color(0xffEBEBEB)),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AssetPictureView(
+                  "home/${b16SelectedQxmvza ? type.iconSel : type.iconUns}",
+                  width: 16.w,
+                  height: 16.w,
+                ),
+                SizedBox(width: 2.w),
+                LocalizedTextView(
+                  type.name.tr,
+                  fontSize: 14.sp,
+                  color: b16SelectedQxmvza?Colors.black:Color(0xffA7B2BD),
+                  fontWeight: FontWeight.w500,
+                ),
+              ],
+            ),
+          ),
+        );
       },
+      separatorBuilder: (BuildContext context, int index) =>
+          SizedBox(width: 8.w),
     ),
   );
 
@@ -137,24 +167,49 @@ class _DashboardSectionState
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            AssetPictureView(
+              "home/home_files_bg",
+              width: 28.w,
+              height: 20.w,
+            ),
+            LocalizedTextView(
+              "Files".tr,
+              fontSize: 32.sp,
+              color: Color(0xff07080E),
+              fontWeight: FontWeight.bold,
+            ),
+          ],
+        ),
         SizedBox(height: 8.h),
         Container(
           width: double.infinity,
           height: 46.h,
           decoration: BoxDecoration(
+            color: Colors.white,
             borderRadius: BorderRadius.circular(12.w),
-            border: Border.all(width: 2.w, color: Color(0xff242C3C)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.2),
+                blurRadius: 5,
+                offset: const Offset(0, -0.5),
+              ),
+            ],
           ),
           child: Row(
             children: [
               SizedBox(width: 12.w),
+              AssetPictureView("common/search", width: 24.w, height: 24.w),
+              SizedBox(width: 8.w),
               Expanded(
                 child: TextField(
                   enabled: true,
                   textAlign: TextAlign.left,
                   controller: controller.textEditingController,
                   textInputAction: TextInputAction.search,
-                  style: TextStyle(fontSize: 14.sp, color: Color(0xff202326)),
+                  style: TextStyle(fontSize: 16.sp, color: Color(0xff202326)),
                   onTap: () {
                     AnalyticsService.instance.trackEvent(
                       pointType: AnalyticsEvent.search_click,
@@ -165,8 +220,8 @@ class _DashboardSectionState
                     isCollapsed: true,
                     hintText: "Search...".tr,
                     hintStyle: TextStyle(
-                      fontSize: 14.sp,
-                      color: Color(0xff202326),
+                      fontSize: 16.sp,
+                      color: Color(0xffA1A1A1),
                     ),
                     border: InputBorder.none,
                   ),
@@ -174,7 +229,6 @@ class _DashboardSectionState
                   onSubmitted: controller.updateFileSearchQuery,
                 ),
               ),
-              AssetPictureView("common/search", width: 22.w, height: 22.w),
               SizedBox(width: 12.w),
             ],
           ),

@@ -43,7 +43,7 @@ class _SwitchState extends State<SwitchView> {
         switchEnabled ? Colors.white : const Color(0xfff5f5f5),
       ),
       trackColor: WidgetStatePropertyAll(
-        switchEnabled ? const Color(0xffD12629) : const Color(0xffc8cdd2),
+        switchEnabled ? const Color(0xffFFBB00) : const Color(0xffc8cdd2),
       ),
     );
   }

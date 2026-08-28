@@ -67,8 +67,8 @@ class PermissionRationaleDialog
               alignment: Alignment.center,
               margin: EdgeInsets.only(left: 24.w, right: 24.w),
               decoration: BoxDecoration(
-                color: Color(0xffD12629),
-                borderRadius: BorderRadius.circular(24.w),
+                color: Color(0xff8C69F3),
+                borderRadius: BorderRadius.circular(12.w),
               ),
               child: LocalizedTextView(
                 "Allow".tr,

@@ -23,6 +23,9 @@ class HomeScreen extends BaseScreen<HomeController> {
   bool get resizeToAvoidBottomInset => false;
 
   @override
+  Color get backgroundColor => Color(0xffF5F7F9);
+
+  @override
   Future<bool> canPopRoute(HomeController controller) =>
       controller.onSystemBackRequested();
 
@@ -50,33 +53,33 @@ class HomeScreen extends BaseScreen<HomeController> {
     HomeController controller,
     BuildContext context,
   ) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
-      height: 92.h,
-      child: Stack(
-        alignment: Alignment.centerLeft,
+      height: 64.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.2),
+            blurRadius: 5,
+            offset: const Offset(0, -0.5),
+          ),
+        ],
+      ),
+      child: Row(
         children: [
-          AssetPictureView(
-            "home/bottom_navigation_background",
-            width: double.infinity,
-            height: double.infinity,
+          itemWidget(HomeTab.files, controller, context),
+          TapGuardView(
+            onPressed: () {
+              ImageImportService.instance.scanDocuments();
+            },
+            child: AssetPictureView(
+              'home/scan_action',
+              width: 48.w,
+              height: 48.w,
+            ),
           ),
-          Row(
-            children: [
-              itemWidget(HomeTab.files, controller, context),
-              TapGuardView(
-                onPressed: () {
-                  ImageImportService.instance.scanDocuments();
-                },
-                child: AssetPictureView(
-                  'home/scan_action',
-                  width: 96.w,
-                  height: 80.w,
-                ),
-              ),
-              itemWidget(HomeTab.tools, controller, context),
-            ],
-          ),
+          itemWidget(HomeTab.tools, controller, context),
         ],
       ),
     );
@@ -99,15 +102,15 @@ class HomeScreen extends BaseScreen<HomeController> {
             children: [
               AssetPictureView(
                 selected ? type.iconSelected : type.iconUnselected,
-                width: 33.w,
-                height: 33.w,
+                width: 28.w,
+                height: 28.w,
               ),
               LocalizedTextView(
                 type.text.tr,
                 fontSize: 12.sp,
                 color: selected
-                    ? const Color(0xff2897F3)
-                    : const Color(0xff9C9FAE),
+                    ? const Color(0xff8C69F3)
+                    : const Color(0xffA7B2BD),
                 fontWeight: FontWeight.bold,
               ),
             ],

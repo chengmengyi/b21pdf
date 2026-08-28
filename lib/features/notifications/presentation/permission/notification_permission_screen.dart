@@ -26,34 +26,33 @@ class NotificationPermissionScreen
   ) {
     return Column(
       children: [
-        SizedBox(height: 120.h),
         AssetPictureView(
           "permissions/notification_illustration",
-          width: 256.w,
-          height: 208.h,
+          width: double.infinity,
+          height: 320.h,
         ),
-        Spacer(),
+        SizedBox(height: 24.h),
         LocalizedTextView(
           "This app has an update".tr,
-          fontSize: 20.sp,
-          color: Color(0xff242C3C),
+          fontSize: 24.sp,
+          color: Color(0xff07080E),
           fontWeight: FontWeight.bold,
         ),
         SizedBox(height: 10.h),
         LocalizedTextView(
           "Please upgrade to enjoy the latest functions.".tr,
-          fontSize: 16.sp,
-          color: Color(0xff555978),
+          fontSize: 14.sp,
+          color: Color(0xff8E9091),
           fontWeight: FontWeight.w500,
         ),
-        SizedBox(height: 20.h),
+        Spacer(),
         Container(
           width: double.infinity,
           padding: EdgeInsets.all(12.w),
-          margin: EdgeInsets.symmetric(horizontal: 30.w),
+          margin: EdgeInsets.symmetric(horizontal: 40.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.w),
-            color: Color(0xffF3F3F4),
+            color: Color(0xffF5F7F9),
           ),
           child: Row(
             children: [
@@ -66,15 +65,15 @@ class NotificationPermissionScreen
                   children: [
                     LocalizedTextView(
                       AppConfig.applicationName.tr,
-                      fontSize: 14.sp,
-                      color: Color(0xff242C3C),
+                      fontSize: 16.sp,
+                      color: Color(0xff07080E),
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis,
                     ),
                     LocalizedTextView(
                       "All notifications".tr,
                       fontSize: 12.sp,
-                      color: Color(0xff9C9FAE),
+                      color: Color(0xff525759),
                     ),
                   ],
                 ),
@@ -83,7 +82,7 @@ class NotificationPermissionScreen
             ],
           ),
         ),
-        SizedBox(height: 30.h),
+        Spacer(),
         PulseView(
           child: TapGuardView(
             onPressed: () {
@@ -91,12 +90,12 @@ class NotificationPermissionScreen
             },
             child: Container(
               width: double.infinity,
-              height: 46.h,
+              height: 48.h,
               alignment: Alignment.center,
               margin: EdgeInsets.symmetric(horizontal: 16.w),
               decoration: BoxDecoration(
-                color: Color(0xffD12629),
-                borderRadius: BorderRadius.circular(42.w),
+                color: Color(0xff8C69F3),
+                borderRadius: BorderRadius.circular(12.w),
               ),
               child: LocalizedTextView(
                 'Update now'.tr,
@@ -113,7 +112,7 @@ class NotificationPermissionScreen
           child: LocalizedTextView(
             'Later'.tr,
             fontSize: 14.sp,
-            color: const Color(0xff555978),
+            color: const Color(0xff525759),
             decoration: TextDecoration.underline,
             fontWeight: FontWeight.bold,
           ),

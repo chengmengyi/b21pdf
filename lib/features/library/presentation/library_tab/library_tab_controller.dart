@@ -19,13 +19,15 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:get/get.dart';
 
 enum DocumentCategory {
-  all("All"),
-  pdf("PDF"),
-  word("Word"),
-  excel("Excel");
+  all("All", "all_tab_sel", "all_tab_uns"),
+  pdf("PDF", "pdf_tab_sel", "pdf_tab_uns"),
+  word("Word", "word_tab_sel", "word_tab_uns",),
+  excel("Excel", "excel_tab_sel", "excel_tab_uns",);
 
   final String name;
-  const DocumentCategory(this.name);
+  final String iconSel;
+  final String iconUns;
+  const DocumentCategory(this.name,this.iconSel,this.iconUns);
 }
 
 class LibraryTabController extends BaseController
