@@ -47,9 +47,10 @@ class LanguagePickerBottomSheet
   Widget _buildContentSection(LanguagePickerController controller) => Container(
     width: double.infinity,
     height: 448.h,
+    padding: EdgeInsets.all(16.w),
     decoration: BoxDecoration(
+      color: Color(0xffF5F7F9),
       borderRadius: BorderRadius.circular(12.w),
-      border: Border.all(width: 0.5.w, color: const Color(0xffE0E3EA)),
     ),
     child: MediaPaddingView(
       child: ListView.builder(
@@ -60,31 +61,34 @@ class LanguagePickerBottomSheet
           final selected = controller.isSelected(item);
           return TapGuardView(
             onPressed: () => controller.onLanguagePressed(item),
-            child: SizedBox(
+            child: Container(
+              width: double.infinity,
               height: 56.h,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Row(
-                  children: [
-                    AssetPictureView(item.icon, width: 32.w, height: 32.w),
-                    SizedBox(width: 12.w),
-                    Expanded(
-                      child: LocalizedTextView(
-                        item.name,
-                        fontSize: 14.sp,
-                        color: const Color(0xff060E23),
-                      ),
+              padding: EdgeInsets.only(left: 12.w,right: 12.w),
+              decoration: BoxDecoration(
+                color: selected?Colors.white:null,
+                borderRadius: BorderRadius.circular(4.w),
+              ),
+              child: Row(
+                children: [
+                  AssetPictureView(item.icon, width: 32.w, height: 32.w),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: LocalizedTextView(
+                      item.name,
+                      fontSize: 14.sp,
+                      color: const Color(0xff060E23),
                     ),
-                    SizedBox(width: 12.w),
-                    AssetPictureView(
-                      selected
-                          ? 'common/radio_selected'
-                          : 'common/radio_unselected',
-                      width: 24.w,
-                      height: 24.w,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(width: 12.w),
+                  AssetPictureView(
+                    selected
+                        ? 'common/radio_selected'
+                        : 'common/radio_unselected',
+                    width: 20.w,
+                    height: 20.w,
+                  ),
+                ],
               ),
             ),
           );
@@ -102,7 +106,7 @@ class LanguagePickerBottomSheet
           child: LocalizedTextView(
             'App Language'.tr,
             fontSize: 20.sp,
-            color: Colors.black,
+            color: Color(0xff07080E),
             fontWeight: FontWeight.bold,
           ),
         ),
