@@ -11,7 +11,7 @@ class LottieWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Lottie.asset(
-    "assets/pdf_animation_bundle/$name.json",
+    "assets/lottie/$name.json",
     width: width,
     height: height,
     fit: boxFit,

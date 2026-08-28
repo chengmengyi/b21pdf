@@ -25,13 +25,8 @@ class PdfTaskProgressScreen extends BaseScreen<PdfTaskProgressController> {
       builder: (PdfTaskProgressController controller) => Column(
         children: [
           _buildTitleBar(controller),
-          SizedBox(height: 100.h),
-          AssetPictureView(
-            "pdf_tools/conversion_progress",
-            width: 114.w,
-            height: 114.w,
-          ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 62.h),
+          LottieWidget(name: "merge",width: 240.w,height: 240.w,repeat: true,),
           LocalizedTextView(
             'PDF Merging...'.tr,
             fontSize: 24.sp,
@@ -42,52 +37,54 @@ class PdfTaskProgressScreen extends BaseScreen<PdfTaskProgressController> {
           LocalizedTextView(
             'Please do not close the app.'.tr,
             fontSize: 14.sp,
-            color: Color(0xff555978),
+            color: Color(0xff525759),
             fontWeight: FontWeight.w500,
           ),
-          Spacer(),
           LocalizedTextView(
             'Processed {current}/{total} images'.tr
                 .replaceAll('{current}', '${controller.processedCount}')
                 .replaceAll('{total}', '${controller.imagePaths.length}'),
             fontSize: 14.sp,
-            color: Color(0xff4B5156),
+            color: Color(0xff525759),
             fontWeight: FontWeight.w500,
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: 62.h),
           Container(
-            margin: EdgeInsets.only(left: 20.w, right: 20.w),
+            margin: EdgeInsets.only(left: 62.w, right: 62.w),
             child: LayoutBuilder(
               builder: (context, bc) {
                 var maxWidth = bc.maxWidth;
                 return Container(
                   width: double.infinity,
-                  height: 6.h,
+                  height: 12.h,
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
-                    color: Color(0xffD12629).withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8.w),
+                    color: Color(0xffF5F7F9),
+                    borderRadius: BorderRadius.circular(6.w),
                   ),
                   child: Container(
                     width: maxWidth * controller.progress,
-                    height: 6.h,
+                    height: 12.h,
                     decoration: BoxDecoration(
-                      color: Color(0xffD12629),
-                      borderRadius: BorderRadius.circular(8.w),
+                      borderRadius: BorderRadius.circular(6.w),
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Color(0xffF8B7FF),Color(0xff9A95F9)]
+                      ),
                     ),
                   ),
                 );
               },
             ),
           ),
-          SizedBox(height: 25.h),
+          SizedBox(height: 8.h),
           LocalizedTextView(
             "${controller.progressPercent}%",
-            fontSize: 20.sp,
-            color: Color(0xff242C3C),
+            fontSize: 14.sp,
+            color: Color(0xff8C69F3),
             fontWeight: FontWeight.bold,
           ),
-          SizedBox(height: 68.h),
         ],
       ),
     );

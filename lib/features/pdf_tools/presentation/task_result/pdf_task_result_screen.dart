@@ -26,11 +26,11 @@ class PdfTaskResultScreen extends BaseScreen<PdfTaskResultController> {
     return Column(
       children: [
         _buildTitleBar(controller),
-        SizedBox(height: 80.h),
+        SizedBox(height: 100.h),
         AssetPictureView(
           "pdf_tools/conversion_complete",
-          width: 196.w,
-          height: 125.w,
+          width: 80.w,
+          height: 80.w,
         ),
         SizedBox(height: 20.h),
         LocalizedTextView(
@@ -42,39 +42,57 @@ class PdfTaskResultScreen extends BaseScreen<PdfTaskResultController> {
         SizedBox(height: 8.h),
         LocalizedTextView(
           'Your file is ready'.tr,
-          fontSize: 16.sp,
-          color: Color(0xff555978),
+          fontSize: 14.sp,
+          color: Color(0xff525759),
           fontWeight: FontWeight.w500,
         ),
-        Spacer(),
+        SizedBox(height: 52.h),
         _infoWidget(controller),
-        SizedBox(height: 18.h),
+        Spacer(),
         _buildBottomSection(controller),
-        SizedBox(height: 46.h),
       ],
     );
   }
 
-  Widget _buildBottomSection(PdfTaskResultController controller) =>
-      TapGuardView(
-        onPressed: controller.onOpenPressed,
-        child: Container(
-          width: double.infinity,
-          height: 46.h,
-          alignment: Alignment.center,
-          margin: EdgeInsets.only(left: 16.w, right: 16.w),
-          decoration: BoxDecoration(
-            color: Color(0xffD12629),
-            borderRadius: BorderRadius.circular(42.w),
-          ),
-          child: LocalizedTextView(
-            "Open".tr,
-            fontSize: 18.sp,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+  Widget _buildBottomSection(PdfTaskResultController controller) => Container(
+    width: double.infinity,
+    height: 88.h,
+    alignment: Alignment.center,
+    padding: EdgeInsets.only(left: 16.w, right: 16.w),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(12.w),
+        topRight: Radius.circular(12.w),
+      ),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.2),
+          blurRadius: 5,
+          offset: const Offset(0, -0.5),
+        ),
+      ],
+    ),
+    child: TapGuardView(
+          onPressed: controller.onOpenPressed,
+          child: Container(
+            width: double.infinity,
+            height: 48.h,
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(left: 16.w, right: 16.w),
+            decoration: BoxDecoration(
+              color: Color(0xff8C69F3),
+              borderRadius: BorderRadius.circular(16.w),
+            ),
+            child: LocalizedTextView(
+              "Open".tr,
+              fontSize: 18.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      );
+  );
 
   Widget _infoWidget(PdfTaskResultController controller) => Container(
     width: double.infinity,
@@ -83,12 +101,15 @@ class PdfTaskResultScreen extends BaseScreen<PdfTaskResultController> {
     padding: EdgeInsets.only(left: 16.w, right: 16.w),
     margin: EdgeInsets.only(left: 40.w, right: 40.w),
     decoration: BoxDecoration(
-      color: Color(0xffF3F3F4),
-      borderRadius: BorderRadius.circular(8.w),
+      borderRadius: BorderRadius.circular(12.w),
+      border: Border.all(
+        width: 0.5.w,
+        color: Color(0xffEBEBEB),
+      ),
     ),
     child: Row(
       children: [
-        AssetPictureView("branding/pdf_logo", width: 42.w, height: 42.w),
+        AssetPictureView("branding/pdf_logo", width: 32.w, height: 32.w),
         SizedBox(width: 12.w),
         Expanded(
           child: Column(
@@ -105,8 +126,7 @@ class PdfTaskResultScreen extends BaseScreen<PdfTaskResultController> {
               LocalizedTextView(
                 controller.fileDetail,
                 fontSize: 12.sp,
-                color: Color(0xff858C92),
-                fontWeight: FontWeight.w500,
+                color: Color(0xff8E9091),
               ),
             ],
           ),
