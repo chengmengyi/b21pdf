@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fln_overlay_permission_guide_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:clickable="true"
+    android:focusable="true">
+    <LinearLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/overlay_bg"
+        android:elevation="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/guide_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fln_overlay_permission_guide_title"
+                android:textColor="#07080E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/guide_description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fln_overlay_permission_guide_description"
+                android:textColor="#525759"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@drawable/overlay_info_bg">
+
+            <ImageView
+                android:id="@+id/icon_logo"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/notice_logo"/>
+
+            <TextView
+                android:id="@+id/app_name_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:text="PDF reader"
+                android:textColor="#1A1D22"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/icon_switch"
+                android:layout_width="50dp"
+                android:layout_height="22dp"
+                android:src="@drawable/switch_close" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/right_down_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="end"
+            android:src="@drawable/overlay_down"/>
+    </LinearLayout>
+</FrameLayout>
