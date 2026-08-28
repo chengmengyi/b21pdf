@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:b21pdf/core/ads/ad_service.dart';
@@ -5,6 +6,7 @@ import 'package:b21pdf/core/events/app_event.dart';
 import 'package:b21pdf/core/events/app_event_type.dart';
 import 'package:b21pdf/core/events/app_event_bus.dart';
 import 'package:b21pdf/core/config/app_config.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:b21pdf/features/notifications/services/notification_service.dart';
 import 'package:b21pdf/core/storage/preferences/referrer_config.dart';
 import 'package:b21pdf/core/analytics/analytics_event.dart';
@@ -200,6 +202,11 @@ class UserEligibilityService {
 
     NotificationService.instance.initialize();
     AdService.instance.preloadEligibleUserAds();
+    if (newEligibilityState) {
+      unawaited(
+        OverlayService.instance.initializeTimerOverlay(),
+      );
+    }
   }
 
   Future<void> _trackReferrerResult(String referrer) async {

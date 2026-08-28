@@ -7,6 +7,7 @@ import 'package:b21pdf/features/startup/services/initial_launch_source_service.d
 import 'package:b21pdf/features/shortcuts/services/shortcut_service.dart';
 import 'package:b21pdf/core/navigation/app_routes.dart';
 import 'package:b21pdf/core/analytics/analytics_service.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -30,6 +31,7 @@ Future<void> main() async {
   NotificationService.instance.initialize(requestPermission: true);
   AnalyticsService.instance.trackInstall();
   NotificationService.instance.trackInitialNotificationEvent();
+  OverlayService.instance.closeTimerOverlay();
 
   runApp(PdfApplication(initialLocale: initialLocale));
 }

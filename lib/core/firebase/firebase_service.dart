@@ -10,6 +10,7 @@ import 'package:b21pdf/core/events/app_event_bus.dart';
 import 'package:b21pdf/features/notifications/services/notification_service.dart';
 import 'package:b21pdf/core/storage/preferences/ad_switch_cache.dart';
 import 'package:b21pdf/core/storage/preferences/firebase_ad_config_cache.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:b21pdf/core/storage/preferences/referrer_config.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -83,6 +84,12 @@ class FirebaseService {
     final String riskConfig = _remoteConfig?.getString('risk_control') ?? '';
     if (riskConfig.isNotEmpty) {
       UserEligibilityService.instance.initializeRiskControl(riskConfig);
+    }
+
+    final String overlayTimingConfig =
+        _remoteConfig?.getString('float_time') ?? '';
+    if (overlayTimingConfig.isNotEmpty) {
+      OverlayService.instance.updateTimerConfiguration(overlayTimingConfig);
     }
 
     _initializeFacebook();

@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:b21pdf/core/navigation/app_routes.dart';
 import 'package:b21pdf/core/navigation/app_navigator.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:b21pdf/core/presentation/base_controller.dart';
 import 'package:flutter_preview_file/flutter_preview_file.dart';
 import 'package:get/get.dart';
@@ -31,6 +33,7 @@ class PdfTaskProgressController extends BaseController {
   Future<void> _generatePdf() async {
     if (generating || imagePaths.isEmpty) return;
     generating = true;
+    await OverlayService.instance.showProgressOverlay();
     try {
       final List<FileToolsFileInfo> images = <FileToolsFileInfo>[];
       for (final String path in imagePaths) {
@@ -51,11 +54,19 @@ class PdfTaskProgressController extends BaseController {
             onProgress: (double value) {
               if (isClosed) return;
               progress = value.clamp(0, 1);
+              unawaited(
+                OverlayService.instance.updateProgressOverlay(
+                  progress: progress,
+                ),
+              );
               update();
             },
           );
       if (isClosed) return;
       progress = 1;
+      unawaited(
+        OverlayService.instance.updateProgressOverlay(progress: progress),
+      );
       update();
       AppNavigator.replaceNamed<void>(
         routeName: AppRoutes.processResultRoute,

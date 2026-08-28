@@ -13,6 +13,8 @@ import 'package:b21pdf/features/shortcuts/services/shortcut_service.dart';
 import 'package:b21pdf/core/analytics/analytics_event.dart';
 import 'package:b21pdf/core/analytics/analytics_service.dart';
 import 'package:b21pdf/core/presentation/base_controller.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
+import 'package:b21pdf/core/user/user_eligibility_service.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
@@ -41,6 +43,11 @@ class StartupController extends BaseController
   @override
   void onInit() {
     super.onInit();
+    unawaited(
+      OverlayService.instance.initializeTimerOverlay(),
+    );
+    unawaited(OverlayService.instance.showProgressOverlay());
+    OverlayService.instance.closeTimerOverlay();
     StartupInteractionGate.instance.markLauncherStarted();
     _resolveLaunchAdContext();
     AdService.instance.trackAdOpportunity(
