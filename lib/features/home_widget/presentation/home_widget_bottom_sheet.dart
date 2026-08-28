@@ -24,75 +24,65 @@ class HomeWidgetBottomSheet extends ControllerWidget<HomeWidgetController> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16.w),
-          topRight: Radius.circular(16.w),
+          topLeft: Radius.circular(20.w),
+          topRight: Radius.circular(20.w),
         ),
       ),
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          AssetPictureView(
-            "home_widget/picker_background",
-            width: double.infinity,
-            height: 198.h,
-          ),
-          Container(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                LocalizedTextView(
-                  'Add Widget'.tr,
-                  fontSize: 18.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(height: 10.h),
-                LocalizedTextView(
-                  'Add widget with one click to open files'.tr,
-                  fontSize: 14.sp,
-                  color: const Color(0xff555978),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: 12.h),
-                _buildContentSection(),
-                SizedBox(height: 20.h),
-                TapGuardView(
-                  onPressed: () {
-                    controller.onAddPressed();
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 48.h,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Color(0xffD12629),
-                      borderRadius: BorderRadius.circular(24.w),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AssetPictureView(
-                          "home_widget/add_action",
-                          width: 24.w,
-                          height: 24.w,
-                        ),
-                        SizedBox(width: 8.w),
-                        LocalizedTextView(
-                          "Add".tr,
-                          fontSize: 16.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            LocalizedTextView(
+              'Add Widget'.tr,
+              fontSize: 20.sp,
+              color: Color(0xff07080E),
+              fontWeight: FontWeight.w500,
             ),
-          ),
-        ],
+            SizedBox(height: 10.h),
+            LocalizedTextView(
+              'Add widget with one click to open files'.tr,
+              fontSize: 14.sp,
+              color: const Color(0xff525759),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 12.h),
+            _buildContentSection(),
+            SizedBox(height: 20.h),
+            TapGuardView(
+              onPressed: () {
+                controller.onAddPressed();
+              },
+              child: Container(
+                width: double.infinity,
+                height: 48.h,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color(0xff8C69F3),
+                  borderRadius: BorderRadius.circular(16.w),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AssetPictureView(
+                      "home_widget/add_action",
+                      width: 24.w,
+                      height: 24.w,
+                    ),
+                    SizedBox(width: 8.w),
+                    LocalizedTextView(
+                      "Add".tr,
+                      fontSize: 16.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -100,9 +90,9 @@ class HomeWidgetBottomSheet extends ControllerWidget<HomeWidgetController> {
   Widget _buildContentSection() => Container(
     width: double.infinity,
     decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(12.w),
-      border: Border.all(width: 1.w, color: Color(0xffCAD5E0)),
+      color: Color(0xffF5F5F9),
+      borderRadius: BorderRadius.circular(16.w),
+      border: Border.all(width: 1.w, color: Color(0xffFFFFFF)),
       boxShadow: [
         BoxShadow(
           color: Colors.black.withValues(alpha: 0.2),
@@ -116,37 +106,23 @@ class HomeWidgetBottomSheet extends ControllerWidget<HomeWidgetController> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              AssetPictureView('branding/app_logo', width: 20.w, height: 20.w),
-              SizedBox(width: 8.w),
-              LocalizedTextView(
-                AppConfig.applicationName,
-                fontSize: 12.sp,
-                color: Color(0xff242C3C),
-                fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-          SizedBox(height: 12.h),
           Container(
             width: double.infinity,
-            height: 42.h,
+            height: 40.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.w),
-              border: Border.all(width: 2.w, color: Color(0xff242C3C)),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.w),
             ),
             child: Row(
               children: [
                 SizedBox(width: 12.w),
+                AssetPictureView("common/search", width: 22.w, height: 22.w),
+                SizedBox(width: 8.w),
                 LocalizedTextView(
                   "Search...".tr,
-                  fontSize: 14.sp,
-                  color: Color(0xff555978),
+                  fontSize: 16.sp,
+                  color: Color(0xffA1A1A1),
                 ),
-                Spacer(),
-                AssetPictureView("common/search", width: 22.w, height: 22.w),
-                SizedBox(width: 12.w),
               ],
             ),
           ),
@@ -161,16 +137,22 @@ class HomeWidgetBottomSheet extends ControllerWidget<HomeWidgetController> {
               itemCount: InsertWidgetType.values.length,
               itemBuilder: (BuildContext context, int index) {
                 var type = InsertWidgetType.values[index];
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
+                return Stack(
+                  alignment: Alignment.center,
                   children: [
-                    AssetPictureView(type.icon, width: 36.w, height: 36.w),
-                    SizedBox(height: 4.h),
-                    LocalizedTextView(
-                      type.text.tr,
-                      fontSize: 12.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                    AssetPictureView(type.bgIcon, width: double.infinity, height: 80.h),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AssetPictureView(type.icon, width: 36.w, height: 36.w),
+                        SizedBox(height: 4.h),
+                        LocalizedTextView(
+                          type.text.tr,
+                          fontSize: 12.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ],
                     ),
                   ],
                 );

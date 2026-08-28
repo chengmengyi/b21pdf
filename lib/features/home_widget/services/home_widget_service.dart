@@ -8,14 +8,15 @@ import 'package:flutter_add_widget_plugins/flutter_add_widget_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 enum InsertWidgetType {
-  home("Home", "home_widget/home_tool"),
-  merge("Merge", "home_widget/merge_tool"),
-  import("Import", "home_widget/import_tool"),
-  convert("Convert", "home_widget/convert_tool");
+  home("Home", "home_widget/home_tool","home_widget/widget_home_bg"),
+  merge("Merge", "home_widget/merge_tool","home_widget/widget_merge_bg"),
+  import("Import", "home_widget/import_tool","home_widget/widget_import_bg"),
+  convert("Convert", "home_widget/convert_tool","home_widget/widget_convert_bg");
 
   final String text;
   final String icon;
-  const InsertWidgetType(this.text, this.icon);
+  final String bgIcon;
+  const InsertWidgetType(this.text, this.icon,this.bgIcon);
 }
 
 class HomeWidgetService {
