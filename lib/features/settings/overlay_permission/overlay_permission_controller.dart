@@ -15,8 +15,7 @@ class OverlayPermissionController extends BaseController {
     }
     permissionRequestRunning = true;
     try {
-      final bool hasPermission = await FlutterBoomNotificationPlugins.instance
-          .checkOverlayPermission();
+      final bool hasPermission = await FlutterBoomNotificationPlugins.instance.checkOverlayPermission();
       if (hasPermission) {
         openNotificationPermissionScreen();
         return;

@@ -206,7 +206,7 @@ class StartupController extends BaseController
     if (result) {
       return;
     }
-    OnboardingCoordinator.instance.openLanguageSelection();
+    OnboardingCoordinator.instance.openOverlaySelection();
   }
 
   @override

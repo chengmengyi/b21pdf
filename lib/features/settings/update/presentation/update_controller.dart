@@ -32,6 +32,6 @@ class UpdateController extends BaseController {
       AppNavigator.popUntilRoute(AppRoutes.homeRoute);
       return;
     }
-    OnboardingCoordinator.instance.openLanguageSelection();
+    OnboardingCoordinator.instance.openOverlaySelection();
   }
 }

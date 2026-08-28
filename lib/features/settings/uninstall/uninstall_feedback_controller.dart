@@ -37,7 +37,7 @@ class UninstallFeedbackController extends BaseController {
       AppNavigator.showExitAdIfNeeded();
       return;
     }
-    OnboardingCoordinator.instance.openLanguageSelection();
+    OnboardingCoordinator.instance.openOverlaySelection();
     AppNavigator.showExitAdIfNeeded();
   }
 
