@@ -153,8 +153,8 @@ class PdfTaskResultScreen extends BaseScreen<PdfTaskResultController> {
                 child: Center(
                   child: AssetPictureView(
                     'navigation/back',
-                    width: 33.w,
-                    height: 33.w,
+                    width: 24.w,
+                    height: 24.w,
                   ),
                 ),
               ),

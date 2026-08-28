@@ -162,7 +162,7 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                     border: Border.all(
                       width: page == controller.currentPage ? 2.w : 0.5.w,
                       color: page == controller.currentPage
-                          ? const Color(0xff067BF2)
+                          ? const Color(0xffF7AD00)
                           : const Color(0xffEBEBEB),
                     ),
                   ),
@@ -179,11 +179,14 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                         right: 2.w,
                         bottom: 2.h,
                         child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(2.w),
+                          ),
                           padding: EdgeInsets.symmetric(
                             horizontal: 5.w,
                             vertical: 1.h,
                           ),
-                          color: Colors.black54,
                           child: Text(
                             '$page',
                             style: TextStyle(
@@ -202,29 +205,64 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
           ),
         ),
         SizedBox(height: 10.h),
-        SizedBox(
-          height: 44.h,
+        Row(
+          children: [
+            SizedBox(width: 16.w),
+            TapGuardView(
+              onPressed: controller.onUndoPressed,
+              child: AssetPictureView('editor/undo', width: 24.w, height: 24.w),
+            ),
+            SizedBox(width: 16.w),
+            TapGuardView(
+              onPressed: controller.onRedoPressed,
+              child: AssetPictureView('editor/redo', width: 24.w, height: 24.w),
+            ),
+            const Spacer(),
+            TapGuardView(
+              onPressed: controller.onSavePressed,
+              child: Container(
+                width: 140.w,
+                height: 44.h,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: const Color(0xffF7AD00),
+                  borderRadius: BorderRadius.circular(12.w),
+                ),
+                child: LocalizedTextView(
+                  controller.saving ? 'Saving...'.tr : 'Save'.tr,
+                  fontSize: 16.sp,
+                  color: Color(0xff07080E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(width: 16.w),
+          ],
+        ),
+        SizedBox(height: 8.h,),
+        Container(
+          height: 48.h,
+          padding: EdgeInsets.only(left: 16.w,right: 16.w),
           child: Row(
             children: PdfEditType.values.map((type) {
               final selected = type == controller.selectedType;
               return Expanded(
                 child: TapGuardView(
                   onPressed: () => controller.onAnnotationToolSelected(type),
-                  child: Center(
-                    child: Container(
-                      width: 38.w,
-                      height: 38.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.w),
-                        border: selected
-                            ? Border.all(width: 1.w, color: Color(0xffD12629))
-                            : null,
-                      ),
-                      child: AssetPictureView(
-                        type.icon,
-                        width: 38.w,
-                        height: 38.w,
-                      ),
+                  child: Container(
+                    width: double.infinity,
+                    height: 48.h,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.w),
+                      border: selected
+                          ? Border.all(width: 1.5.w, color: Color(0xff8C69F3))
+                          : null,
+                    ),
+                    child: AssetPictureView(
+                      selected?type.iconSel:type.iconUns,
+                      width: 28.w,
+                      height: 28.w,
                     ),
                   ),
                 ),
@@ -232,52 +270,7 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
             }).toList(),
           ),
         ),
-        SizedBox(height: 8.h),
-        Row(
-          children: [
-            SizedBox(width: 16.w),
-            TapGuardView(
-              onPressed: controller.onUndoPressed,
-              child: AssetPictureView('editor/undo', width: 30.w, height: 30.w),
-            ),
-            SizedBox(width: 10.w),
-            TapGuardView(
-              onPressed: controller.onRedoPressed,
-              child: AssetPictureView('editor/redo', width: 30.w, height: 30.w),
-            ),
-            const Spacer(),
-            TapGuardView(
-              onPressed: controller.onSavePressed,
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 34.w,
-                  right: 34.w,
-                  top: 6.h,
-                  bottom: 6.h,
-                ),
-                decoration: BoxDecoration(
-                  color: const Color(0xffD12629),
-                  borderRadius: BorderRadius.circular(22.w),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AssetPictureView("editor/save", width: 25.w, height: 25.w),
-                    SizedBox(width: 4.w),
-                    LocalizedTextView(
-                      controller.saving ? 'Saving...'.tr : 'Save'.tr,
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(width: 16.w),
-          ],
-        ),
-        SizedBox(height: 8.h),
+        SizedBox(height: 8.h,),
       ],
     ),
   );
@@ -300,8 +293,8 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                 child: Center(
                   child: AssetPictureView(
                     'navigation/back',
-                    width: 33.w,
-                    height: 33.w,
+                    width: 24.w,
+                    height: 24.w,
                   ),
                 ),
               ),
@@ -313,7 +306,7 @@ class PdfViewerScreen extends BaseScreen<PdfViewerScreenController> {
                   controller.fileName,
                   fontSize: 18.sp,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

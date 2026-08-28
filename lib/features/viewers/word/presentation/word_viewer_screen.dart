@@ -84,7 +84,7 @@ class WordViewerScreen extends BaseScreen<WordViewerController> {
             onTap: controller.onEditPressed,
             color: controller.isEditing
                 ? const Color(0xff858C92)
-                : const Color(0xffD12629),
+                : const Color(0xffF7AD00),
           ),
         ),
         if (controller.isEditing) SizedBox(width: 8.w),
@@ -93,7 +93,7 @@ class WordViewerScreen extends BaseScreen<WordViewerController> {
             child: _buildActionButton(
               text: controller.isSaving ? 'Saving...'.tr : 'Save'.tr,
               onTap: controller.onSavePressed,
-              color: const Color(0xffD12629),
+              color: const Color(0xffF7AD00),
             ),
           ),
       ],
@@ -110,7 +110,7 @@ class WordViewerScreen extends BaseScreen<WordViewerController> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(22.w),
+        borderRadius: BorderRadius.circular(12.w),
       ),
       child: LocalizedTextView(
         text,
@@ -138,8 +138,8 @@ class WordViewerScreen extends BaseScreen<WordViewerController> {
                 child: Center(
                   child: AssetPictureView(
                     'navigation/back',
-                    width: 33.w,
-                    height: 33.w,
+                    width: 24.w,
+                    height: 24.w,
                   ),
                 ),
               ),

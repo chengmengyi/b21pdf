@@ -16,13 +16,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 enum PdfEditType {
-  highlight('editor/highlight_tool'),
-  underline('editor/underline_tool'),
-  strikeThrough('editor/strikethrough_tool'),
-  pen('editor/freehand_tool');
+  highlight('editor/highlight_tool',"editor/highlight_tool_sel"),
+  underline('editor/underline_tool',"editor/underline_tool_sel"),
+  strikeThrough('editor/strikethrough_tool',"editor/strikethrough_tool_sel"),
+  pen('editor/freehand_tool',"editor/freehand_tool_sel");
 
-  final String icon;
-  const PdfEditType(this.icon);
+  final String iconUns;
+  final String iconSel;
+  const PdfEditType(this.iconUns,this.iconSel);
 }
 
 class PdfStroke {
