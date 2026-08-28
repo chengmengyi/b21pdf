@@ -58,7 +58,7 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
       children: [
         SizedBox(height: 8.h),
         SizedBox(
-          height: 78.h,
+          height: 88.h,
           child: ListView.separated(
             controller: controller.thumbnailController,
             itemCount: controller.imagePaths.length,
@@ -70,14 +70,15 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                   controller.selectImage(index);
                 },
                 child: Container(
-                  width: 60.w,
+                  width: 72.w,
+                  height: 88.h,
                   decoration: BoxDecoration(
                     color: const Color(0xffF3F5F7),
                     borderRadius: BorderRadius.circular(3.w),
                     border: Border.all(
                       width: 2.w,
                       color: controller.selectedIndex == index
-                          ? const Color(0xff067bf2)
+                          ? const Color(0xffF7AD00)
                           : const Color(0xffEBEBEB),
                     ),
                   ),
@@ -94,14 +95,17 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                         ),
                       ),
                       Positioned(
-                        top: 0,
-                        left: 0,
+                        right: 0,
+                        bottom: 0,
                         child: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 5.w,
                             vertical: 1.h,
                           ),
-                          color: Colors.black54,
+                          decoration: BoxDecoration(
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(2.w),
+                          ),
                           child: Text(
                             '$page',
                             style: TextStyle(
@@ -125,12 +129,15 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
             TapGuardView(
               onPressed: controller.onReplacePressed,
               child: Container(
-                width: 92.w,
+                width: 64.w,
                 height: 64.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color(0xffF5F6F9),
-                  borderRadius: BorderRadius.circular(16.w),
+                  borderRadius: BorderRadius.circular(12.w),
+                  border: Border.all(
+                    width: 1.w,
+                    color: Color(0xffCFD6DC),
+                  ),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -143,8 +150,8 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                     SizedBox(height: 4.h),
                     LocalizedTextView(
                       "Retake".tr,
-                      fontSize: 14.sp,
-                      color: Color(0xff242C3C),
+                      fontSize: 11.sp,
+                      color: Color(0xff525759),
                       fontWeight: FontWeight.w500,
                     ),
                   ],
@@ -155,12 +162,15 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
             TapGuardView(
               onPressed: controller.onAddPressed,
               child: Container(
-                width: 92.w,
+                width: 64.w,
                 height: 64.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color(0xffF5F6F9),
-                  borderRadius: BorderRadius.circular(16.w),
+                  borderRadius: BorderRadius.circular(12.w),
+                  border: Border.all(
+                    width: 1.w,
+                    color: Color(0xffCFD6DC),
+                  ),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -173,8 +183,8 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                     SizedBox(height: 4.h),
                     LocalizedTextView(
                       "Add".tr,
-                      fontSize: 14.sp,
-                      color: Color(0xff242C3C),
+                      fontSize: 11.sp,
+                      color: Color(0xff525759),
                       fontWeight: FontWeight.w500,
                     ),
                   ],
@@ -192,10 +202,10 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                   height: 64.h,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Color(0xffD12629),
-                    borderRadius: BorderRadius.circular(8.w),
+                    color: Color(0xffF7AD00),
+                    borderRadius: BorderRadius.circular(12.w),
                   ),
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       AssetPictureView(
@@ -203,11 +213,11 @@ class ImageSelectionScreen extends BaseScreen<ImageSelectionController> {
                         width: 22.w,
                         height: 22.w,
                       ),
-                      SizedBox(height: 2.w),
+                      SizedBox(width: 4.w,),
                       LocalizedTextView(
                         "Save PDF".tr,
-                        fontSize: 14.sp,
-                        color: Colors.white,
+                        fontSize: 16.sp,
+                        color: Color(0xff07080E),
                         fontWeight: FontWeight.bold,
                       ),
                     ],
