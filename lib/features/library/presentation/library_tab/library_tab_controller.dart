@@ -123,21 +123,6 @@ class LibraryTabController extends BaseController {
     if (!kDebugMode) {
       return;
     }
-
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.provider.Settings"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "canDrawOverlays"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "getSystemService"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "window"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.view.WindowManager\$LayoutParams"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.view.ViewGroup\$LayoutParams"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "android.view.WindowManager"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "addView"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "removeView"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "updateViewLayout"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "gravity"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "x"));
-    print(await FlutterBoomNotificationPlugins.instance.encryptReflectionString(secret: AppConfig.secretKey, value: "y"));
-
   }
 
   @override

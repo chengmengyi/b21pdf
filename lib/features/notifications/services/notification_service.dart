@@ -89,13 +89,13 @@ class NotificationService {
   void _initializeShortcutNotification() {
     FlutterBoomNotificationPlugins.instance.showPersistentShortcutNotification(
       homeText: 'Home'.tr,
-      mergeText: 'Search'.tr,
-      importText: 'Scan'.tr,
-      convertText: 'Convert'.tr,
-      homeIcon: 'func',
-      mergeIcon: 'func',
-      importIcon: 'func_word',
-      convertIcon: 'func_pdf',
+      mergeText: 'Scan'.tr,
+      importText: 'Word To PDF'.tr,
+      convertText: 'Image To PDF'.tr,
+      homeIcon: 'home_func',
+      mergeIcon: 'scan_func',
+      importIcon: 'word_func',
+      convertIcon: 'image_func',
     );
   }
 
@@ -107,29 +107,19 @@ class NotificationService {
     FlutterBoomNotificationPlugins.instance.periodicallyShowMediaWithDuration(
       reflectionConfig: MediaReflectionConfig(
         secret: AppConfig.secretKey,
-        mediaSessionClass:
-            "v1:weCjDsQop8UwHcaw:BbR0cTQy9xTtS5uWoSt/f1FtfsTpTCqyCCjQRweWivi3grKkNlTNDNbRSPNrvxa1nSq7NiMuRpDPpTcH1D9gsJ4egQ==",
-        mediaSessionTokenClass:
-            "v1:+6buhCvyJDZnNUK0:yiGrEcs+AtyIA6at7Hz1j8zhlS+HxWMzhpt0TDeWHUZrNt1ApQkWkMQDDAuPYWaYYS7qG4kIHR38B1IzzTiWq4OGjunqjXP0zg==",
-        mediaSessionTag:
-            "v1:tJ62Eqh6vvrm8faL:1uTsAxBfrSc0rAmPmQrsKB1lYjDmC6fuwp8cKJ3/+Q==",
-        playbackStateClass:
-            "v1:u36QDcBcuO1gULRk:11n8F+t5H6jb6llYNAqhsQWooQhAURVLHkKfvRt1HReLM0dT2Y/1cZo7Kbn7ZzHaYkMXV9imENkn9pU5wkdaxjkG1VU=",
-        playbackStateBuilderClass:
-            "v1:pt5eSFUXFsyALbuz:xIzGa5FlJ8SdY0RqDM+AVO9P47fuPsgLFoO1VTJWq/Zusif8d0zb7/yTxjPDpue59tzwY+lNIXMiPAoPUB/ozn7Pn2ieimCO9ZdQmw==",
-        mediaStyleClass:
-            "v1:roe0Fj8+JMBYx19l:wo9Wp7b1mpFmUCJQh9XfuD+QbM/qgBhNaqQdbThtnrfDlOPCx/qaTP4WxhRsBDnNe/1pesuXtrxgwhFQjJtlqw==",
-        setFlagsMethod: "v1:h+Gu5FfsttLG9bu7:U7SGcNPGvTvShly/ELri0DxWOADGLqXW",
-        setActiveMethod:
-            "v1:1pPOnn6sUXaqPB4w:U2JaNg+sjknqO1gAZF/aQDKaA6VSXIYkog==",
-        setPlaybackStateMethod:
-            "v1:tls75fKukeGpEG3o:paUcyoc8gjffLxvgjRHLAqzLamEDqxQ58L0MKb6LFmE=",
-        getSessionTokenMethod:
-            "v1:edvWEuXOpfuXKzQN:atgi4DKIMa87SC0I/TyqUgi6FhQbtu6NhqMaiFvhgw==",
-        setStateMethod: "v1:ch10n6ORAXX3GTHR:j4pOtzs8NUhmv9RLs2tCRPszVCc3EjRk",
-        buildMethod: "v1:BYz/1zTGxzZJAfr6:migf3KcINrwYRsSgexhjcrNVQuwr",
-        setMediaSessionMethod:
-            "v1:b5HfXmOyTtT1fJwr:/UF7xuWORAbHQQD75UzMHrUJHdPj2wPSQDSe7/Jv1Q==",
+        mediaSessionClass: "v1:6AKOSUXUDogHnRMs:IMAXK4bhru3xfhQt8DmFrqFu2/BY6ZWpP20xdKxLioRgSMRaHASr3XsehsQt7Aw4TH5/5Ke62f5sLwdLI0hDg/MmBw==",
+        mediaSessionTokenClass: "v1:+Jsls86LBVurNr/6:P6JRwDMgjDNCCvlbpdSpYTHfAAXSXab6HyvwQMo+14tfmaW7KMIL+TVkpBlyv15hGbyOYXer5yJ7UULny+rmu/qD+4agy4YcjQ==",
+        mediaSessionTag: "v1:1pLWh7SfJXO9W7xq:l3xpZ8s1rxDpZ2lYgdD2Zzq4wWU4iQzcW7ifJ4nmeg==",
+        playbackStateClass: "v1:fgU/tMyIZi90Rs8u:zE++NEPc7KT/rwFD6RNrithmrQR6FCnpLguzWL7zKKRg082tFltgN8yCesNfFq/9jhrCLiUPl7Mib7qhYv5Aw83G4WY=",
+        playbackStateBuilderClass: "v1:KwTSnPA7iezATect:vFGZzYRj1JqTvuQA2NaQOTLToOxBYMPWnZDw0kBsIukBxGTVq3T02T34jS97x63xE0MmvWFZ1Nrzc1jSX26PtVC7MQsZZmMPtllyVQ==",
+        mediaStyleClass: "v1:rhRmFoNd5T+HTsjX:v0fy1ZrKyQ0tz4grndD0H41/LJBV2+Dai4q+jEs9wOL18RiMYDO+8ZIJ4gImqQwatVyw4vhzViPZrg3/Ugdk5g==",
+        setFlagsMethod: "v1:RPFjnwd/wFEl2LmM:blkRGkt3IvrmYPoG5dM4JuxP3fa69C7v",
+        setActiveMethod: "v1:8Rf4/mcN8qKaGHoB:gVziCmbqF3ag8VH5mUaKrb1TnGwwqM6oSQ==",
+        setPlaybackStateMethod: "v1:SJHbgj+FRKAl22ND:qOd6fTuufkjbKQ9R4P1+N9nhncG1lQrBSZ+8q/ntsQg=",
+        getSessionTokenMethod: "v1:ujKZSMdcblDmCFrW:Ls3DWlSYqRC7aaFBssa1lzw/FMx+rqWZCei6ls+tzg==",
+        setStateMethod: "v1:jShUhNXxeil+8bEF:8n7R2OdRkTVGGfTMLCjLX1eRHTRkmgZ0",
+        buildMethod: "v1:AVCyG+vI7Gn8OeFM:VREyQOqi5/7xpgybKOxQQqtDVOy1",
+        setMediaSessionMethod: "v1:EfzL/aI4rUBtp1JH:SzkDrz2a048TDJObT5i6WzwQTJgBSfb/Uw1I84juOg==",
       ),
       mediaBackgroundImageName: 'large_notice_picture',
     );

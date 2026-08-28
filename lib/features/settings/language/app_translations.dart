@@ -242,6 +242,23 @@ final class AppTranslations extends Translations {
           'Almost there! Unlock your full potential',
       'Find {n} below and toggle the switch to ON.':
           'Find {n} below and toggle the switch to ON.',
+      'Still working on your file...': 'Still working on your file...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.',
+      'Still reading?': 'Still reading?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!",
+      'Pending Documents': 'Pending Documents',
+      'You have documents waiting for your attention.':
+          'You have documents waiting for your attention.',
+      'View Now': 'View Now',
+      'Files Awaiting You': 'Files Awaiting You',
+      'There are some files ready for your review. Shall we take a look?':
+          'There are some files ready for your review. Shall we take a look?',
+      'Open Files': 'Open Files',
+      'New Documents': 'New Documents',
+      'You have pending files to handle.': 'You have pending files to handle.',
+      'Review': 'Review',
     },
     'fr': {
       'Enjoying PDF Reader?': 'Vous aimez PDF Reader ?',
@@ -402,6 +419,25 @@ final class AppTranslations extends Translations {
           'Vous y êtes presque ! Libérez tout votre potentiel',
       'Find {n} below and toggle the switch to ON.':
           'Trouvez {n} ci-dessous et activez l’interrupteur.',
+      'Still working on your file...':
+          'Traitement de votre fichier en cours...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'Votre PDF est presque prêt en arrière-plan. Appuyez pour revenir et l’enregistrer, ou laissez-nous terminer le traitement.',
+      'Still reading?': 'Vous lisez toujours ?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'Vous vous êtes arrêté à la page 12. Reprenez instantanément là où vous en étiez !',
+      'Pending Documents': 'Documents en attente',
+      'You have documents waiting for your attention.':
+          'Des documents attendent votre attention.',
+      'View Now': 'Voir maintenant',
+      'Files Awaiting You': 'Des fichiers vous attendent',
+      'There are some files ready for your review. Shall we take a look?':
+          'Des fichiers sont prêts à être consultés. Voulez-vous les voir ?',
+      'Open Files': 'Ouvrir les fichiers',
+      'New Documents': 'Nouveaux documents',
+      'You have pending files to handle.':
+          'Vous avez des fichiers en attente à traiter.',
+      'Review': 'Consulter',
     },
     'ja': {
       'Enjoying PDF Reader?': 'PDF Readerをお楽しみですか？',
@@ -545,6 +581,22 @@ final class AppTranslations extends Translations {
       'Almost there! Unlock your full potential': 'あと少しです！すべての機能を有効にしましょう',
       'Find {n} below and toggle the switch to ON.':
           '下から{n}を見つけて、スイッチをオンにしてください。',
+      'Still working on your file...': 'ファイルを処理しています...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'バックグラウンドでPDFを処理しています。タップして戻り保存するか、そのまま完了までお待ちください。',
+      'Still reading?': 'まだ読んでいますか？',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          '12ページで中断しました。タップしてすぐに続きを読むことができます！',
+      'Pending Documents': '保留中のドキュメント',
+      'You have documents waiting for your attention.': '確認待ちのドキュメントがあります。',
+      'View Now': '今すぐ見る',
+      'Files Awaiting You': '確認待ちのファイル',
+      'There are some files ready for your review. Shall we take a look?':
+          '確認できるファイルがあります。今すぐ確認しますか？',
+      'Open Files': 'ファイルを開く',
+      'New Documents': '新しいドキュメント',
+      'You have pending files to handle.': '処理待ちのファイルがあります。',
+      'Review': '確認する',
     },
     'ko': {
       'Enjoying PDF Reader?': 'PDF Reader가 마음에 드시나요?',
@@ -688,6 +740,22 @@ final class AppTranslations extends Translations {
       'Later': '나중에',
       'Almost there! Unlock your full potential': '거의 다 됐어요! 모든 기능을 활성화하세요',
       'Find {n} below and toggle the switch to ON.': '아래에서 {n}을 찾아 스위치를 켜세요.',
+      'Still working on your file...': '파일을 처리하고 있습니다...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          '백그라운드에서 PDF가 거의 완성되었습니다. 탭하여 돌아가 저장하거나 처리가 끝날 때까지 기다려 주세요.',
+      'Still reading?': '아직 읽고 계신가요?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          '12페이지에서 멈췄습니다. 탭하여 파일로 돌아가 바로 이어서 읽어 보세요!',
+      'Pending Documents': '대기 중인 문서',
+      'You have documents waiting for your attention.': '확인이 필요한 문서가 있습니다.',
+      'View Now': '지금 보기',
+      'Files Awaiting You': '확인 대기 중인 파일',
+      'There are some files ready for your review. Shall we take a look?':
+          '검토할 파일이 준비되었습니다. 지금 확인하시겠어요?',
+      'Open Files': '파일 열기',
+      'New Documents': '새 문서',
+      'You have pending files to handle.': '처리할 파일이 대기 중입니다.',
+      'Review': '검토',
     },
     'de': {
       'Enjoying PDF Reader?': 'Gefällt dir PDF Reader?',
@@ -851,6 +919,24 @@ final class AppTranslations extends Translations {
           'Fast geschafft! Nutzen Sie das volle Potenzial',
       'Find {n} below and toggle the switch to ON.':
           'Suchen Sie unten nach {n} und schalten Sie den Schalter ein.',
+      'Still working on your file...': 'Ihre Datei wird noch verarbeitet...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'Ihre PDF-Datei ist im Hintergrund fast fertig. Tippen Sie, um zurückzukehren und sie zu speichern, oder warten Sie, bis die Verarbeitung abgeschlossen ist.',
+      'Still reading?': 'Lesen Sie noch?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'Sie haben auf Seite 12 aufgehört. Tippen Sie, um sofort zur Datei zurückzukehren!',
+      'Pending Documents': 'Ausstehende Dokumente',
+      'You have documents waiting for your attention.':
+          'Dokumente warten auf Ihre Aufmerksamkeit.',
+      'View Now': 'Jetzt ansehen',
+      'Files Awaiting You': 'Dateien warten auf Sie',
+      'There are some files ready for your review. Shall we take a look?':
+          'Einige Dateien können überprüft werden. Möchten Sie sie ansehen?',
+      'Open Files': 'Dateien öffnen',
+      'New Documents': 'Neue Dokumente',
+      'You have pending files to handle.':
+          'Sie haben ausstehende Dateien zu bearbeiten.',
+      'Review': 'Überprüfen',
     },
     'es': {
       'Enjoying PDF Reader?': '¿Te gusta PDF Reader?',
@@ -1013,6 +1099,24 @@ final class AppTranslations extends Translations {
           '¡Ya casi está! Desbloquea todo tu potencial',
       'Find {n} below and toggle the switch to ON.':
           'Busca {n} abajo y activa el interruptor.',
+      'Still working on your file...': 'Seguimos procesando tu archivo...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'Tu PDF está casi listo en segundo plano. Toca para volver y guardarlo, o espera a que termine el procesamiento.',
+      'Still reading?': '¿Sigues leyendo?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'Te quedaste en la página 12. ¡Toca para volver al archivo al instante!',
+      'Pending Documents': 'Documentos pendientes',
+      'You have documents waiting for your attention.':
+          'Tienes documentos que requieren tu atención.',
+      'View Now': 'Ver ahora',
+      'Files Awaiting You': 'Archivos pendientes',
+      'There are some files ready for your review. Shall we take a look?':
+          'Hay archivos listos para revisar. ¿Quieres verlos?',
+      'Open Files': 'Abrir archivos',
+      'New Documents': 'Documentos nuevos',
+      'You have pending files to handle.':
+          'Tienes archivos pendientes por gestionar.',
+      'Review': 'Revisar',
     },
     'it': {
       'Enjoying PDF Reader?': 'Ti piace PDF Reader?',
@@ -1174,6 +1278,23 @@ final class AppTranslations extends Translations {
           'Ci siamo quasi! Sblocca tutto il tuo potenziale',
       'Find {n} below and toggle the switch to ON.':
           'Trova {n} qui sotto e attiva l’interruttore.',
+      'Still working on your file...': 'Elaborazione del file in corso...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'Il PDF è quasi pronto in background. Tocca per tornare indietro e salvarlo oppure attendi il completamento.',
+      'Still reading?': 'Stai ancora leggendo?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'Hai interrotto la lettura a pagina 12. Tocca per tornare subito al file!',
+      'Pending Documents': 'Documenti in attesa',
+      'You have documents waiting for your attention.':
+          'Hai dei documenti in attesa della tua attenzione.',
+      'View Now': 'Visualizza ora',
+      'Files Awaiting You': 'File in attesa',
+      'There are some files ready for your review. Shall we take a look?':
+          'Alcuni file sono pronti per essere controllati. Vuoi visualizzarli?',
+      'Open Files': 'Apri file',
+      'New Documents': 'Nuovi documenti',
+      'You have pending files to handle.': 'Hai dei file in attesa da gestire.',
+      'Review': 'Controlla',
     },
     'pt': {
       'Enjoying PDF Reader?': 'Está gostando do PDF Reader?',
@@ -1337,6 +1458,25 @@ final class AppTranslations extends Translations {
           'Quase lá! Libere todo o seu potencial',
       'Find {n} below and toggle the switch to ON.':
           'Encontre {n} abaixo e ative o interruptor.',
+      'Still working on your file...':
+          'Seu arquivo ainda está sendo processado...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'Seu PDF está quase pronto em segundo plano. Toque para voltar e salvá-lo ou aguarde a conclusão do processamento.',
+      'Still reading?': 'Ainda está lendo?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'Você parou na página 12. Toque para voltar ao arquivo imediatamente!',
+      'Pending Documents': 'Documentos pendentes',
+      'You have documents waiting for your attention.':
+          'Há documentos aguardando sua atenção.',
+      'View Now': 'Ver agora',
+      'Files Awaiting You': 'Arquivos aguardando você',
+      'There are some files ready for your review. Shall we take a look?':
+          'Alguns arquivos estão prontos para revisão. Vamos dar uma olhada?',
+      'Open Files': 'Abrir arquivos',
+      'New Documents': 'Novos documentos',
+      'You have pending files to handle.':
+          'Você tem arquivos pendentes para processar.',
+      'Review': 'Revisar',
     },
     'ru': {
       'Enjoying PDF Reader?': 'Нравится PDF Reader?',
@@ -1499,6 +1639,24 @@ final class AppTranslations extends Translations {
           'Почти готово! Раскройте весь потенциал',
       'Find {n} below and toggle the switch to ON.':
           'Найдите {n} ниже и включите переключатель.',
+      'Still working on your file...': 'Файл всё ещё обрабатывается...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'PDF почти готов в фоновом режиме. Нажмите, чтобы вернуться и сохранить его, или дождитесь завершения обработки.',
+      'Still reading?': 'Всё ещё читаете?',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'Вы остановились на странице 12. Нажмите, чтобы мгновенно вернуться к файлу!',
+      'Pending Documents': 'Документы в ожидании',
+      'You have documents waiting for your attention.':
+          'Есть документы, требующие вашего внимания.',
+      'View Now': 'Посмотреть сейчас',
+      'Files Awaiting You': 'Файлы ожидают вас',
+      'There are some files ready for your review. Shall we take a look?':
+          'Некоторые файлы готовы к просмотру. Открыть их?',
+      'Open Files': 'Открыть файлы',
+      'New Documents': 'Новые документы',
+      'You have pending files to handle.':
+          'У вас есть файлы, ожидающие обработки.',
+      'Review': 'Просмотреть',
     },
     'zh_TW': {
       'Enjoying PDF Reader?': '喜歡 PDF Reader 嗎？',
@@ -1638,6 +1796,22 @@ final class AppTranslations extends Translations {
       'Later': '稍後',
       'Almost there! Unlock your full potential': '快完成了！解鎖完整功能',
       'Find {n} below and toggle the switch to ON.': '在下方找到 {n}，並將開關切換為開啟。',
+      'Still working on your file...': '仍在處理您的檔案...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          '您的 PDF 即將在背景完成。點擊即可返回並儲存，或讓我們繼續完成處理。',
+      'Still reading?': '還在閱讀嗎？',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          '您上次讀到第 12 頁。點擊即可立即返回檔案繼續閱讀！',
+      'Pending Documents': '待處理文件',
+      'You have documents waiting for your attention.': '您有文件等待處理。',
+      'View Now': '立即查看',
+      'Files Awaiting You': '等待您的檔案',
+      'There are some files ready for your review. Shall we take a look?':
+          '有些檔案已準備好供您檢視。現在查看嗎？',
+      'Open Files': '開啟檔案',
+      'New Documents': '新文件',
+      'You have pending files to handle.': '您有待處理的檔案。',
+      'Review': '檢視',
     },
     'zh_CN': {
       'Enjoying PDF Reader?': '喜欢 PDF Reader 吗？',
@@ -1777,6 +1951,22 @@ final class AppTranslations extends Translations {
       'Later': '稍后',
       'Almost there! Unlock your full potential': '即将完成！解锁全部功能',
       'Find {n} below and toggle the switch to ON.': '在下方找到 {n}，并将开关切换为开启。',
+      'Still working on your file...': '仍在处理您的文件...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          '您的 PDF 即将在后台完成。点击即可返回并保存，或让我们继续完成处理。',
+      'Still reading?': '还在阅读吗？',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          '您上次读到第 12 页。点击即可立即返回文件继续阅读！',
+      'Pending Documents': '待处理文档',
+      'You have documents waiting for your attention.': '您有文档等待处理。',
+      'View Now': '立即查看',
+      'Files Awaiting You': '等待您的文件',
+      'There are some files ready for your review. Shall we take a look?':
+          '有些文件已准备好供您查看。现在查看吗？',
+      'Open Files': '打开文件',
+      'New Documents': '新文档',
+      'You have pending files to handle.': '您有待处理的文件。',
+      'Review': '查看',
     },
     'ar': {
       'Enjoying PDF Reader?': 'هل يعجبك PDF Reader؟',
@@ -1930,6 +2120,24 @@ final class AppTranslations extends Translations {
           'أوشكت على الانتهاء! أطلق العنان لإمكاناتك الكاملة',
       'Find {n} below and toggle the switch to ON.':
           'ابحث عن {n} أدناه وفعّل مفتاح التبديل.',
+      'Still working on your file...': 'لا تزال معالجة ملفك جارية...',
+      'Your PDF is almost ready in the background. Tap to jump back and save it, or let me finish the heavy lifting for you.':
+          'ملف PDF الخاص بك أوشك على الاكتمال في الخلفية. اضغط للعودة وحفظه، أو انتظر حتى تكتمل المعالجة.',
+      'Still reading?': 'هل ما زلت تقرأ؟',
+      "You left off on page 12. Don't lose your spot-tap to get back to your file instantly!":
+          'توقفت عند الصفحة 12. اضغط للعودة إلى ملفك فورًا ومتابعة القراءة!',
+      'Pending Documents': 'المستندات المعلقة',
+      'You have documents waiting for your attention.':
+          'لديك مستندات تنتظر مراجعتك.',
+      'View Now': 'عرض الآن',
+      'Files Awaiting You': 'ملفات بانتظارك',
+      'There are some files ready for your review. Shall we take a look?':
+          'توجد ملفات جاهزة للمراجعة. هل تريد الاطلاع عليها؟',
+      'Open Files': 'فتح الملفات',
+      'New Documents': 'مستندات جديدة',
+      'You have pending files to handle.':
+          'لديك ملفات معلقة تحتاج إلى المعالجة.',
+      'Review': 'مراجعة',
     },
   };
 }

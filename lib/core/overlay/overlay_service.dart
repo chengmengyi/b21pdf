@@ -30,6 +30,28 @@ class OverlayService {
       layoutName2: 'small_overlay_layout',
       contentList2: SmallOverlayContent.build(),
       reflectionConfig: await _buildTimerReflectionConfig(),
+      contentList3: [
+        TimerOverlayContent(
+          title: 'Home'.tr,
+          subtitle: 'home_func',
+          button: "",
+        ),
+        TimerOverlayContent(
+          title: 'Scan'.tr,
+          subtitle: 'scan_func',
+          button: "",
+        ),
+        TimerOverlayContent(
+          title: 'Word To PDF'.tr,
+          subtitle: 'word_func',
+          button: "",
+        ),
+        TimerOverlayContent(
+          title: 'Image To PDF'.tr,
+          subtitle: 'image_func',
+          button: "",
+        ),
+      ],
     );
   }
 
