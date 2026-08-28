@@ -49,23 +49,16 @@ class DocumentSortBottomSheet extends ControllerWidget<DocumentSortController> {
           },
           child: Container(
             width: double.infinity,
-            height: 56.h,
+            height: 48.h,
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: 16.w, right: 16.w),
             padding: EdgeInsets.only(left: 16.w, right: 16.w),
             decoration: BoxDecoration(
-              color: selected ? null : Colors.white,
               borderRadius: BorderRadius.circular(8.w),
-              gradient: selected
-                  ? LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Color(0xffD12629).withOpacity(0.1),
-                        Colors.transparent,
-                      ],
-                    )
-                  : null,
+              border: Border.all(
+                width: 1.w,
+                color: selected?Color(0xffF5F7F9):Colors.white,
+              )
             ),
             child: Row(
               children: [
@@ -80,8 +73,8 @@ class DocumentSortBottomSheet extends ControllerWidget<DocumentSortController> {
                     type.text.tr,
                     fontSize: 16.sp,
                     color: selected
-                        ? const Color(0xffD12629)
-                        : const Color(0xff242C3C),
+                        ? const Color(0xff8C69F3)
+                        : const Color(0xff4B4D56),
                     fontWeight: FontWeight.w500,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -90,8 +83,8 @@ class DocumentSortBottomSheet extends ControllerWidget<DocumentSortController> {
                 if (selected)
                   AssetPictureView(
                     "document_library/sort_selection",
-                    width: 24.w,
-                    height: 24.w,
+                    width: 20.w,
+                    height: 20.w,
                   ),
               ],
             ),
@@ -107,13 +100,13 @@ class DocumentSortBottomSheet extends ControllerWidget<DocumentSortController> {
     child: Stack(
       children: [
         Align(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: Container(
             margin: EdgeInsets.only(left: 16.w),
             child: LocalizedTextView(
               "Sort By".tr,
-              fontSize: 16.sp,
-              color: Colors.black,
+              fontSize: 20.sp,
+              color: Color(0xff07080E),
               fontWeight: FontWeight.bold,
             ),
           ),

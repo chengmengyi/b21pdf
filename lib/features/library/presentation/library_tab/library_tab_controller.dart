@@ -16,36 +16,26 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:get/get.dart';
 
 enum DocumentCategory {
   all("All", "all_tab_sel", "all_tab_uns"),
   pdf("PDF", "pdf_tab_sel", "pdf_tab_uns"),
-  word("Word", "word_tab_sel", "word_tab_uns",),
-  excel("Excel", "excel_tab_sel", "excel_tab_uns",);
+  word("Word", "word_tab_sel", "word_tab_uns"),
+  excel("Excel", "excel_tab_sel", "excel_tab_uns");
 
-  final String name;
-  final String iconSel;
-  final String iconUns;
-  const DocumentCategory(this.name,this.iconSel,this.iconUns);
+  final String label;
+  final String selectedIcon;
+  final String unselectedIcon;
+
+  const DocumentCategory(this.label, this.selectedIcon, this.unselectedIcon);
 }
 
-class LibraryTabController extends BaseController
-    with GetSingleTickerProviderStateMixin {
-  TextEditingController textEditingController = TextEditingController();
-  late final TabController tabController;
+class LibraryTabController extends BaseController {
+  final TextEditingController textEditingController = TextEditingController();
+  final PageController pageController = PageController();
   int selectedTabIndex = 0;
   bool showAddWidget = !InsertWidgetCache.readAdded();
   bool requestingStoragePermission = false;
-
-  @override
-  void onInit() {
-    super.onInit();
-    tabController = TabController(
-      length: DocumentCategory.values.length,
-      vsync: this,
-    )..addListener(onSelectedTabChanged);
-  }
 
   @override
   void onReady() {
@@ -53,19 +43,21 @@ class LibraryTabController extends BaseController
     requestDocumentStoragePermission();
   }
 
-  void onTabBarPressed() {
+  void selectCategory(DocumentCategory category) {
     AnalyticsService.instance.trackEvent(
       pointType: AnalyticsEvent.file_filter_click,
     );
+    pageController.animateToPage(
+      category.index,
+      duration: const Duration(milliseconds: 100),
+      curve: Curves.easeInOut,
+    );
   }
 
-  void onSelectedTabChanged() {
-    final int index = tabController.index;
+  void onPageChanged(int index, BuildContext context) {
     if (selectedTabIndex == index) return;
     selectedTabIndex = index;
     update();
-    final BuildContext? context = Get.context;
-    if (context == null) return;
     AdService.instance.showCachedAd(
       adScene: AdScene.pr_user_use,
       adPosId: AdPlacement.pr_up_int,
@@ -136,9 +128,7 @@ class LibraryTabController extends BaseController
   @override
   void onClose() {
     textEditingController.dispose();
-    tabController
-      ..removeListener(onSelectedTabChanged)
-      ..dispose();
+    pageController.dispose();
     super.onClose();
   }
 }

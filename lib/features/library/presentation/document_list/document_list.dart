@@ -40,87 +40,114 @@ class _DocumentsListSectionState
       init: controller,
       global: false,
       builder: (controller) {
-        return Column(
+        return Stack(
           children: [
-            _buildSortControls(controller),
-            SizedBox(height: 8.h),
-            _buildContentSection(controller),
+            Container(
+              width: double.infinity,
+              height: 64.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16.w),
+                  topRight: Radius.circular(16.w),
+                ),
+                border: Border.all(
+                  width: 1.w,
+                  color: Colors.white,
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xffECE4FF),Color(0xffFCFBFF)],
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                _buildSortControls(controller),
+                _buildContentSection(controller),
+              ],
+            )
           ],
         );
       },
     );
   }
 
-  Widget _buildSortControls(DocumentListController controller) => Row(
-    children: [
-      Expanded(
-        child: TapGuardView(
-          onPressed: () {
-            controller.runDebugActions();
-          },
-          child: LocalizedTextView(
-            "Local Storage".tr,
-            fontSize: 18.sp,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            overflow: TextOverflow.ellipsis,
+  Widget _buildSortControls(DocumentListController controller) => Container(
+    width: double.infinity,
+    height: 48.h,
+    alignment: Alignment.centerLeft,
+    padding: EdgeInsets.only(left: 16.w,right: 16.w),
+    child: Row(
+      children: [
+        Expanded(
+          child: TapGuardView(
+            onPressed: () {
+              controller.runDebugActions();
+            },
+            child: LocalizedTextView(
+              "Local Storage".tr,
+              fontSize: 18.sp,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
-      ),
-      SizedBox(width: 8.w),
-      TapGuardView(
-        onPressed: () {
-          controller.onSortPressed();
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AssetPictureView(
-              "document_library/sort_menu",
-              width: 22.w,
-              height: 22.w,
-            ),
-            SizedBox(width: 4.w),
-            LocalizedTextView(
-              "Sort".tr,
-              fontSize: 12.sp,
-              color: Color(0xff555978),
-              fontWeight: FontWeight.w500,
-            ),
-          ],
+        SizedBox(width: 8.w),
+        TapGuardView(
+          onPressed: () {
+            controller.onSortPressed();
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AssetPictureView(
+                "document_library/sort_menu",
+                width: 20.w,
+                height: 20.w,
+              ),
+              SizedBox(width: 4.w),
+              LocalizedTextView(
+                "Sort".tr,
+                fontSize: 14.sp,
+                color: Color(0xff8E9091),
+                fontWeight: FontWeight.w500,
+              ),
+            ],
+          ),
         ),
-      ),
-      SizedBox(width: 12.w),
-      TapGuardView(
-        onPressed: () {
-          controller.onDeleteFilePressed();
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AssetPictureView(
-              "document_library/select_documents",
-              width: 22.w,
-              height: 22.w,
-            ),
-            SizedBox(width: 4.w),
-            LocalizedTextView(
-              "Select".tr,
-              fontSize: 12.sp,
-              color: Color(0xff555978),
-              fontWeight: FontWeight.w500,
-            ),
-          ],
+        SizedBox(width: 12.w),
+        TapGuardView(
+          onPressed: () {
+            controller.onDeleteFilePressed();
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AssetPictureView(
+                "document_library/select_documents",
+                width: 20.w,
+                height: 20.w,
+              ),
+              SizedBox(width: 4.w),
+              LocalizedTextView(
+                "Select".tr,
+                fontSize: 14.sp,
+                color: Color(0xff8E9091),
+                fontWeight: FontWeight.w500,
+              ),
+            ],
+          ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 
   Widget _buildContentSection(DocumentListController controller) => Expanded(
     child: Container(
       width: double.infinity,
       height: double.infinity,
-      margin: EdgeInsets.only(bottom: 8.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.w),
@@ -177,8 +204,12 @@ class _DocumentsListSectionState
         final file = controller.visibleFiles[fileIndex];
         return _buildFileItem(controller, file);
       },
-      separatorBuilder: (BuildContext context, int index) =>
-          SizedBox(height: 8.h),
+      separatorBuilder: (BuildContext context, int index) => Container(
+        width: double.infinity,
+        height: 0.5.h,
+        color: Color(0xffF5F7F9),
+        margin: EdgeInsets.only(left: 16.w),
+      ),
     );
   }
 
@@ -246,20 +277,9 @@ class _DocumentsListSectionState
         height: 68.h,
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.symmetric(horizontal: 16.w),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.w),
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              _fileBackgroundColor(file).withOpacity(0.08),
-              Colors.transparent,
-            ],
-          ),
-        ),
         child: Row(
           children: [
-            AssetPictureView(_fileIcon(file), width: 40.w, height: 40.w),
+            AssetPictureView(_fileIcon(file), width: 32.w, height: 32.w),
             SizedBox(width: 12.w),
             Expanded(
               child: Column(
@@ -269,15 +289,13 @@ class _DocumentsListSectionState
                   LocalizedTextView(
                     file.name ?? '',
                     fontSize: 14.sp,
-                    color: Color(0xff242C3C),
-                    fontWeight: FontWeight.bold,
+                    color: Color(0xff07080E),
                     overflow: TextOverflow.ellipsis,
                   ),
                   LocalizedTextView(
                     _formatFileMetadata(file),
-                    fontSize: 10.sp,
-                    color: const Color(0xff9C9FAE),
-                    fontWeight: FontWeight.w500,
+                    fontSize: 12.sp,
+                    color: const Color(0xff8E9091),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
@@ -355,41 +373,39 @@ class _DocumentsListSectionState
         children: [
           AssetPictureView(
             "document_library/storage_permission",
-            width: 75.w,
-            height: 75.w,
+            width: 120.w,
+            height: 120.w,
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: 12.h),
           LocalizedTextView(
             "No permissions granted".tr,
-            fontSize: 18.sp,
-            color: Color(0xff242C3C),
+            fontSize: 20.sp,
+            color: Color(0xff07080E),
             fontWeight: FontWeight.bold,
           ),
           SizedBox(height: 6.h),
           LocalizedTextView(
             "Permission is required to access all files".tr,
             fontSize: 14.sp,
-            color: Color(0xff555978),
+            color: Color(0xff8E9091),
           ),
-          SizedBox(height: 40.h),
+          SizedBox(height: 20.h),
           TapGuardView(
             onPressed: () {
               controller.onRequestPermissionPressed();
             },
             child: Container(
-              padding: EdgeInsets.only(
-                left: 36.w,
-                right: 36.w,
-                top: 8.h,
-                bottom: 8.h,
-              ),
+              width: double.infinity,
+              height: 48.h,
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(left: 24.w,right: 24.w),
               decoration: BoxDecoration(
-                color: Color(0xffD12629),
-                borderRadius: BorderRadius.circular(42.w),
+                color: Color(0xff8C69F3),
+                borderRadius: BorderRadius.circular(12.w),
               ),
               child: LocalizedTextView(
                 "Go to settings".tr,
-                fontSize: 16.sp,
+                fontSize: 18.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),

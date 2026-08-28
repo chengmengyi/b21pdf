@@ -62,20 +62,11 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
             },
             child: Container(
               width: double.infinity,
-              height: 68.h,
+              height: 72.h,
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 16.w, right: 16.w),
-              padding: EdgeInsets.only(left: 16.w, right: 16.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.w),
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    _fileBackgroundColor(file).withOpacity(0.1),
-                    Colors.transparent,
-                  ],
-                ),
               ),
               child: Row(
                 children: [
@@ -83,14 +74,14 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                     controller.isSelected(file)
                         ? "common/radio_selected"
                         : "common/radio_unselected",
-                    width: 24.w,
-                    height: 24.w,
+                    width: 20.w,
+                    height: 20.w,
                   ),
                   SizedBox(width: 12.w),
                   AssetPictureView(
                     controller.resolveFileIcon(file),
-                    width: 40.w,
-                    height: 40.w,
+                    width: 32.w,
+                    height: 32.w,
                   ),
                   SizedBox(width: 12.w),
                   Expanded(
@@ -101,15 +92,14 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                         LocalizedTextView(
                           file.name ?? '',
                           fontSize: 14.sp,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                          color: Color(0xff07080E),
+                          fontWeight: FontWeight.w500,
                           overflow: TextOverflow.ellipsis,
                         ),
                         LocalizedTextView(
                           _formatFileMetadata(file),
-                          fontSize: 10.sp,
-                          color: Color(0xff9C9FAE),
-                          fontWeight: FontWeight.w500,
+                          fontSize: 12.sp,
+                          color: Color(0xff8E9091),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ],
@@ -120,8 +110,12 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
             ),
           );
         },
-        separatorBuilder: (BuildContext context, int index) =>
-            SizedBox(height: 6.h),
+        separatorBuilder: (BuildContext context, int index) => Container(
+          width: double.infinity,
+          height: 0.5.h,
+          color: Color(0xffF5F7F9),
+          margin: EdgeInsets.only(left: 16.w),
+        ),
       ),
     ),
   );
@@ -144,7 +138,7 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
 
   _buildBottomSection(DeleteDocumentsController controller) => Container(
     width: double.infinity,
-    height: 60.h,
+    height: 88.h,
     alignment: Alignment.center,
     padding: EdgeInsets.only(left: 16.w, right: 16.w),
     decoration: BoxDecoration(
@@ -167,11 +161,11 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
       },
       child: Container(
         width: double.infinity,
-        height: 44.h,
+        height: 48.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xffD12629),
-          borderRadius: BorderRadius.circular(22.w),
+          color: Color(0xff8C69F3),
+          borderRadius: BorderRadius.circular(16.w),
         ),
         child: LocalizedTextView(
           "Delete".tr,
@@ -197,28 +191,6 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
         child: Row(
           children: [
             TapGuardView(
-              onPressed: controller.onSelectAllPressed,
-              child: LocalizedTextView(
-                "Select All".tr,
-                fontSize: 14.sp,
-                color: Color(0xffD12629),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: LocalizedTextView(
-                  '{n} Selected'.tr.replaceAll(
-                    '{n}',
-                    controller.selectedPaths.length.toString(),
-                  ),
-                  fontSize: 16.sp,
-                  color: Color(0xff242C3C),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            TapGuardView(
               onPressed: () {
                 AppNavigator.backWithExitAd<void>();
               },
@@ -227,6 +199,26 @@ class DeleteDocumentsScreen extends BaseScreen<DeleteDocumentsController> {
                 fontSize: 14.sp,
                 color: Color(0xff9C9FAE),
                 fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(width: 12.w,),
+            Expanded(
+              child: LocalizedTextView(
+                '{n} Selected'.tr.replaceAll(
+                  '{n}',
+                  controller.selectedPaths.length.toString(),
+                ),
+                fontSize: 16.sp,
+                color: Color(0xff242C3C),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            TapGuardView(
+              onPressed: controller.onSelectAllPressed,
+              child: LocalizedTextView(
+                "Select All".tr,
+                fontSize: 14.sp,
+                color: Color(0xff30B667),
               ),
             ),
           ],

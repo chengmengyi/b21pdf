@@ -15,10 +15,10 @@ class LibraryTab extends BaseTab {
   const LibraryTab({super.key});
 
   @override
-  State<LibraryTab> createState() => _DashboardSectionState();
+  State<LibraryTab> createState() => _LibraryTabState();
 }
 
-class _DashboardSectionState
+class _LibraryTabState
     extends BaseSectionState<LibraryTabController, LibraryTab> {
   @override
   LibraryTabController createController() {
@@ -34,8 +34,9 @@ class _DashboardSectionState
         child: Column(
           children: [
             _buildHeader(controller),
-            _tabWidget(controller),
-            if (controller.showAddWidget) _addSmallWidget(controller),
+            SizedBox(height: 16.h),
+            _buildCategoryTabs(controller),
+            if (controller.showAddWidget) _buildAddWidgetBanner(),
             SizedBox(height: 12.h),
             _buildTabPages(controller),
           ],
@@ -45,55 +46,52 @@ class _DashboardSectionState
   }
 
   Widget _buildTabPages(LibraryTabController controller) => Expanded(
-    child: TabBarView(
-      controller: controller.tabController,
-      children: DocumentCategory.values
-          .map((DocumentCategory type) => DocumentList(type: type))
-          .toList(growable: false),
+    child: PageView.builder(
+      controller: controller.pageController,
+      itemCount: DocumentCategory.values.length,
+      onPageChanged: (int index) => controller.onPageChanged(index, context),
+      itemBuilder: (BuildContext context, int index) =>
+          DocumentList(type: DocumentCategory.values[index]),
     ),
   );
 
-  _tabWidget(LibraryTabController controller) => SizedBox(
+  Widget _buildCategoryTabs(LibraryTabController controller) => SizedBox(
     width: double.infinity,
     height: 28.h,
     child: ListView.separated(
       itemCount: DocumentCategory.values.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        var type = DocumentCategory.values[index];
-        final b16SelectedQxmvza = index == b16controllerVqmxze.b16SelectedTabIndexQmvnza;
-        return B16TapGuardViewMfwqke(
-          b16OnPressedJkcxwu: () {
-            b16controllerVqmxze.clickTabItem(type);
+        final DocumentCategory category = DocumentCategory.values[index];
+        final bool isSelected = index == controller.selectedTabIndex;
+        return TapGuardView(
+          onPressed: () {
+            controller.selectCategory(category);
           },
-          b16ChildHnqvsa: Container(
-            padding: EdgeInsets.only(left: 12.w, right: 12.w),
+          child: Container(
+            padding: EdgeInsets.only(left: 12.w,right: 12.w),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18.w),
-              color: b16SelectedQxmvza ? null : Colors.white,
-              gradient: b16SelectedQxmvza
-                  ? LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
-              )
-                  : null,
-              border: Border.all(width: 1.w, color: Color(0xffEBEBEB)),
+              borderRadius: BorderRadius.circular(12.w),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xffE8EEF4),Color(0xffFFFFFF)]
+              ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 AssetPictureView(
-                  "home/${b16SelectedQxmvza ? type.iconSel : type.iconUns}",
+                  "home/${isSelected ? category.selectedIcon : category.unselectedIcon}",
                   width: 16.w,
                   height: 16.w,
                 ),
-                SizedBox(width: 2.w),
+                SizedBox(width: 4.w),
                 LocalizedTextView(
-                  type.name.tr,
+                  category.label.tr,
                   fontSize: 14.sp,
-                  color: b16SelectedQxmvza?Colors.black:Color(0xffA7B2BD),
-                  fontWeight: FontWeight.w500,
+                  color: isSelected ? Colors.black : const Color(0xffA7B2BD),
+                  fontWeight: FontWeight.bold,
                 ),
               ],
             ),
@@ -105,62 +103,67 @@ class _DashboardSectionState
     ),
   );
 
-  _addSmallWidget(LibraryTabController controller) => Container(
-    width: double.infinity,
-    height: 50.h,
-    margin: EdgeInsets.only(top: 8.h),
-    padding: EdgeInsets.only(left: 16.w, right: 16.w),
-    decoration: BoxDecoration(
-      color: Color(0xffFFC21C).withOpacity(0.14),
-      borderRadius: BorderRadius.circular(25.w),
-    ),
-    child: Row(
-      children: [
-        AssetPictureView(
-          "home_widget/add_widget_banner",
-          width: 32.w,
-          height: 32.w,
+  Widget _buildAddWidgetBanner() => Stack(
+    alignment: Alignment.bottomLeft,
+    children: [
+      Container(
+        width: double.infinity,
+        height: 56.h,
+        margin: EdgeInsets.only(top: 8.h),
+        padding: EdgeInsets.only(left: 68.w, right: 16.w),
+        decoration: BoxDecoration(
+          color: const Color(0xffFFECB8),
+          borderRadius: BorderRadius.circular(28.w),
         ),
-        SizedBox(width: 8.w),
-        Expanded(
-          child: LocalizedTextView(
-            "To access features instantly, add the widget!".tr,
-            fontSize: 14.sp,
-            color: Color(0xff242C3C),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-            fontWeight: FontWeight.w500,
-          ),
+        child: Row(
+          children: [
+            SizedBox(width: 8.w),
+            Expanded(
+              child: LocalizedTextView(
+                "To access features instantly, add the widget!".tr,
+                fontSize: 14.sp,
+                color: Color(0xff07080E),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(width: 8.w),
+            TapGuardView(
+              onPressed: () {
+                HomeWidgetService.instance.openWidgetPicker();
+              },
+              child: Container(
+                padding: EdgeInsets.only(
+                  left: 16.w,
+                  right: 16.w,
+                  top: 4.h,
+                  bottom: 4.h,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(18.w),
+                ),
+                child: LocalizedTextView(
+                  "Grant".tr,
+                  fontSize: 14.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
-        SizedBox(width: 8.w),
-        TapGuardView(
-          onPressed: () {
-            HomeWidgetService.instance.openWidgetPicker();
-          },
-          child: Container(
-            padding: EdgeInsets.only(
-              left: 16.w,
-              right: 16.w,
-              top: 4.h,
-              bottom: 4.h,
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xff2897F3),
-              borderRadius: BorderRadius.circular(18.w),
-            ),
-            child: LocalizedTextView(
-              "Grant".tr,
-              fontSize: 14.sp,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    ),
+      ),
+      AssetPictureView(
+        "home_widget/add_widget_banner",
+        width: 64.w,
+        height: 64.w,
+      ),
+    ],
   );
 
-  _buildHeader(LibraryTabController controller) => SafeArea(
+  Widget _buildHeader(LibraryTabController controller) => SafeArea(
     top: true,
     bottom: false,
     child: Column(
@@ -170,11 +173,7 @@ class _DashboardSectionState
         Stack(
           alignment: Alignment.bottomRight,
           children: [
-            AssetPictureView(
-              "home/home_files_bg",
-              width: 28.w,
-              height: 20.w,
-            ),
+            AssetPictureView("home/home_files_bg", width: 28.w, height: 20.w),
             LocalizedTextView(
               "Files".tr,
               fontSize: 32.sp,
