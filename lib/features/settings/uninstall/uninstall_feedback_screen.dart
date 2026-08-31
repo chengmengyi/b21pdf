@@ -87,7 +87,7 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                                     builder.reasonList[index].tr,
                                     fontSize: 14.sp,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
@@ -96,8 +96,8 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                                   selected
                                       ? "common/radio_selected"
                                       : "common/radio_unselected",
-                                  width: 24.w,
-                                  height: 24.w,
+                                  width: 20.w,
+                                  height: 20.w,
                                 ),
                               ],
                             ),
@@ -162,8 +162,8 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
           alignment: Alignment.center,
           margin: EdgeInsets.only(left: 34.w, right: 34.w),
           decoration: BoxDecoration(
-            color: Color(0xffDF2019),
-            borderRadius: BorderRadius.circular(22.w),
+            color: Color(0xff8C69F3),
+            borderRadius: BorderRadius.circular(16.w),
           ),
           child: LocalizedTextView(
             "Don't uninstall for now".tr,
@@ -181,7 +181,7 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
         child: LocalizedTextView(
           "Uninstall".tr,
           fontSize: 16.sp,
-          color: Color(0xff8C8E9C),
+          color: Color(0xff8E9091),
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -220,7 +220,7 @@ class UninstallFeedbackScreen extends BaseScreen<UninstallFeedbackController> {
                       "Uninstall reason".tr,
                       fontSize: 18.sp,
                       color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),

@@ -17,39 +17,39 @@ class UpdateDialog extends CenterDialog<UpdateController> {
   Widget buildDialog(BuildContext context, UpdateController controller) {
     return Container(
       width: double.infinity,
+      height: 400.h,
       margin: EdgeInsets.only(left: 28.w, right: 28.w),
       child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
           AssetPictureView(
             "feedback/update_dialog_background",
             width: double.infinity,
-            height: 120.h,
+            height: 400.h,
           ),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.all(8.w),
-            margin: EdgeInsets.only(top: 100.h),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.w),
-            ),
+            margin: EdgeInsets.only(left: 16.w,right: 16.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                LocalizedTextView(
-                  "New version coming soon!".tr,
-                  fontSize: 20.sp,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(height: 12.h),
+                // LocalizedTextView(
+                //   "New version coming soon!".tr,
+                //   fontSize: 20.sp,
+                //   color: Colors.black,
+                //   fontWeight: FontWeight.bold,
+                // ),
+                // SizedBox(height: 12.h),
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
-                    color: Color(0xffF3F5F7),
                     borderRadius: BorderRadius.circular(8.w),
-                    border: Border.all(width: 0.5.w, color: Color(0xffEBEBEB)),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.topCenter,
+                      colors: [Color(0xffFFFFFF),Color(0xffE1E8FF)],
+                    ),
                   ),
                   child: LocalizedTextView(
                     "Your feedback has been received! This information is vital to us. We are continuously optimizing the product experience, and a new version will be launched soon. Please stay with us!"
@@ -66,11 +66,11 @@ class UpdateDialog extends CenterDialog<UpdateController> {
                     height: 48.h,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24.w),
+                      borderRadius: BorderRadius.circular(16.w),
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
-                        colors: [Color(0xffFF8E71), Color(0xffA77FF1)],
+                        colors: [Color(0xff8C69F3), Color(0xff4F29D9)],
                       ),
                     ),
                     child: LocalizedTextView(
@@ -81,17 +81,17 @@ class UpdateDialog extends CenterDialog<UpdateController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 12.h),
                 TapGuardView(
                   onPressed: controller.onLeaveAnywayPressed,
                   child: LocalizedTextView(
                     "Leave anyway".tr,
                     fontSize: 14.sp,
-                    color: Color(0xff858C92),
+                    color: Color(0xff6A73A2),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 12.h),
               ],
             ),
           ),
