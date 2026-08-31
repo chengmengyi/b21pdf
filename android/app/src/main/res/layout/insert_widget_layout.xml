@@ -7,23 +7,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/insert_widget_bg_res">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/notice_logo"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="#242C3C"
-            android:layout_marginLeft="8dp"
-            android:text="@string/app_name"/>
-    </LinearLayout>
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:paddingLeft="12dp"
@@ -31,18 +14,18 @@
         android:layout_marginTop="12dp"
         android:gravity="center_vertical"
         android:background="@drawable/widget_search_bg2">
-        <TextView
-            android:id="@+id/searchTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Search..."
-            android:textSize="12sp"
-            android:textColor="#555978"/>
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/search"/>
+        <TextView
+            android:id="@+id/searchTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search..."
+            android:textSize="16sp"
+            android:textColor="#555978"
+            android:layout_marginLeft="8dp"/>
     </LinearLayout>
     <GridView
         android:id="@+id/gridView"

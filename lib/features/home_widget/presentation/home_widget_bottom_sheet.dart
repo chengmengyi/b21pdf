@@ -140,11 +140,11 @@ class HomeWidgetBottomSheet extends ControllerWidget<HomeWidgetController> {
                 return Stack(
                   alignment: Alignment.center,
                   children: [
-                    AssetPictureView(type.bgIcon, width: double.infinity, height: 80.h),
+                    AssetPictureView("home_widget/${type.bgIcon}", width: double.infinity, height: 80.h),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        AssetPictureView(type.icon, width: 36.w, height: 36.w),
+                        AssetPictureView("home_widget/${type.icon}", width: 36.w, height: 36.w),
                         SizedBox(height: 4.h),
                         LocalizedTextView(
                           type.text.tr,

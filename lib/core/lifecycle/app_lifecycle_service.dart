@@ -6,6 +6,7 @@ import 'package:b21pdf/core/ads/ad_placement.dart';
 import 'package:b21pdf/core/events/app_event.dart';
 import 'package:b21pdf/core/events/app_event_type.dart';
 import 'package:b21pdf/core/events/app_event_bus.dart';
+import 'package:b21pdf/core/overlay/overlay_service.dart';
 import 'package:b21pdf/features/startup/services/active_launch_source_service.dart';
 import 'package:b21pdf/features/notifications/services/notification_service.dart';
 import 'package:b21pdf/core/storage/preferences/last_open_ad_close_time.dart';
@@ -67,6 +68,7 @@ class AppLifecycleService {
   }
 
   Future<void> _onAppForegrounded() async {
+    OverlayService.instance.closeTimerOverlay();
     if (!_appIsBack && !_suppressNextHotLaunch) {
       return;
     }

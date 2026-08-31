@@ -24,7 +24,7 @@ class UpdateController extends BaseController {
       );
     }
     _returnToApp();
-    await AppSettings.openAppSettings();
+    // await AppSettings.openAppSettings();
   }
 
   void _returnToApp() {

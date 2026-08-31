@@ -128,12 +128,12 @@ class UserEligibilityService {
     FlutterPdfRiskControlPlugins.instance.initPdfRiskControl(
       riskConfigJson: riskConfig,
       ipConfig: FlutterPdfRiskControlIpConfig(
-        requestUrl: 'https://ip-prod.pdfutilitydocforge.com/api/cduck',
+        requestUrl: 'https://ip-prod.pdfreaderscanner.net/api/csnake',
         requestData: <String, String>{
-          'abat': await FlutterTbaInfo.instance.getAndroidId(),
+          'aape': await FlutterTbaInfo.instance.getAndroidId(),
         },
         riskResultKey: 'bcat',
-        decryptCode: 63,
+        decryptCode: 67,
       ),
       callback: FlutterPdfRiskControlCallback(
         onUploadSessionRisk: (Map<String, int> riskSummary) {},

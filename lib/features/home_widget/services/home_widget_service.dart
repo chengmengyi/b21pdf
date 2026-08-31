@@ -8,10 +8,10 @@ import 'package:flutter_add_widget_plugins/flutter_add_widget_plugins.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 enum InsertWidgetType {
-  home("Home", "home_widget/home_tool","home_widget/widget_home_bg"),
-  merge("Merge", "home_widget/merge_tool","home_widget/widget_merge_bg"),
-  import("Import", "home_widget/import_tool","home_widget/widget_import_bg"),
-  convert("Convert", "home_widget/convert_tool","home_widget/widget_convert_bg");
+  home("Home", "home_tool","widget_home_bg"),
+  merge("Merge", "merge_tool","widget_merge_bg"),
+  import("Import", "import_tool","widget_import_bg"),
+  convert("Convert", "convert_tool","widget_convert_bg");
 
   final String text;
   final String icon;
@@ -41,6 +41,7 @@ class HomeWidgetService {
       items: _widgetInfoList,
       layoutName: "insert_widget_layout",
       searchText: "Search".tr,
+      itemLayout: "insert_widget_item_layout",
     );
     await InsertWidgetCache.saveAdded(true);
     AppEventBus.instance.publish(AppEvent(type: AppEventType.widgetAdded));
@@ -50,7 +51,7 @@ class HomeWidgetService {
     _widgetInfoList.clear();
     for (var value in InsertWidgetType.values) {
       _widgetInfoList.add(
-        WidgetInfo(icon: value.icon, name: value.text.tr, type: value.name),
+        WidgetInfo(icon: value.icon, name: value.text.tr, type: value.name,bgRes: value.bgIcon),
       );
     }
   }

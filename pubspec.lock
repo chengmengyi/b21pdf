@@ -369,11 +369,10 @@ packages:
   flutter_add_widget_plugins:
     dependency: "direct main"
     description:
-      name: flutter_add_widget_plugins
-      sha256: fcbae9b912f8d2bd02059ac0820c5f478e713e57d49f1b876e7cd7a157e1b06a
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3"
+      path: "/Users/chengmengyi/testbird/flutter_add_widget_plugins"
+      relative: false
+    source: path
+    version: "0.0.4"
   flutter_app_lifecycle:
     dependency: "direct main"
     description:
