@@ -14,7 +14,6 @@ import 'package:b21pdf/core/analytics/analytics_event.dart';
 import 'package:b21pdf/core/analytics/analytics_service.dart';
 import 'package:b21pdf/core/presentation/base_controller.dart';
 import 'package:b21pdf/core/overlay/overlay_service.dart';
-import 'package:b21pdf/core/user/user_eligibility_service.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
@@ -43,9 +42,7 @@ class StartupController extends BaseController
   @override
   void onInit() {
     super.onInit();
-    unawaited(
-      OverlayService.instance.initializeTimerOverlay(),
-    );
+    unawaited(OverlayService.instance.initializeTimerOverlay());
     unawaited(OverlayService.instance.showProgressOverlay());
     OverlayService.instance.closeTimerOverlay();
     StartupInteractionGate.instance.markLauncherStarted();
@@ -70,6 +67,12 @@ class StartupController extends BaseController
     if (_useNewLaunchAd) {
       launchAdScene = AdScene.pr_new_launch;
       launchAdPosId = AdPlacement.pr_new_open;
+      return;
+    }
+
+    if (InitialLaunchSourceService.instance.timerOverlayClickEvent != null) {
+      launchAdScene = AdScene.pr_launch;
+      launchAdPosId = AdPlacement.pr_open_pop;
       return;
     }
 

@@ -7,13 +7,17 @@ class InitialLaunchSourceService {
 
   String? notificationPayload;
   String? quickActionType;
+  TimerOverlayClickEvent? timerOverlayClickEvent;
 
   void recordShortcutLaunch(String shortcutType) {
     quickActionType = shortcutType;
   }
 
   Future<void> initialize() async {
-    await _initializeNotificationLaunchSource();
+    await Future.wait(<Future<void>>[
+      _initializeNotificationLaunchSource(),
+      _initializeTimerOverlayLaunchSource(),
+    ]);
   }
 
   Future<void> _initializeNotificationLaunchSource() async {
@@ -28,5 +32,12 @@ class InitialLaunchSourceService {
               ?.payloadType
               ?.name;
     }
+  }
+
+  Future<void> _initializeTimerOverlayLaunchSource() async {
+    try {
+      timerOverlayClickEvent = await FlutterBoomNotificationPlugins.instance
+          .consumeTimerOverlayClickEvent();
+    } catch (_) {}
   }
 }

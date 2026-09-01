@@ -130,8 +130,8 @@
     "only_send_floating_window": false,
     "trigger_with_scheduled": true,
     "trigger_with_broadcast": true,
-    "standalone_enabled": false,
-    "standalone_interval_minutes": 60,
-    "standalone_daily_limit": 8
+    "standalone_enabled": true,
+    "standalone_interval_minutes": 1,
+    "standalone_daily_limit": 800
   }
 }

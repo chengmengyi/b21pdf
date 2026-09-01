@@ -437,15 +437,15 @@ class AdService implements FlutterPdfAdListener {
     required AdPlacement adPosId,
   }) {
     final bool isBPackage = UserEligibilityService.instance.isEligibleUser;
-    final bool isBCooldownPlacement =
-        adScene == AdScene.pr_new_launch || adScene == AdScene.pr_launch;
-    final bool isBCooldownPosId = <AdPlacement>{
-      AdPlacement.pr_up_int,
-      AdPlacement.pr_down_int,
-      AdPlacement.pr_readback,
-      AdPlacement.pr_exit_app,
-    }.contains(adPosId);
-    if (isBPackage && !isBCooldownPlacement && !isBCooldownPosId) {
+    final bool shouldCheckCooldown =
+        !isBPackage ||
+        <AdPlacement>{
+          AdPlacement.pr_up_int,
+          AdPlacement.pr_down_int,
+          AdPlacement.pr_readback,
+          AdPlacement.pr_exit_app,
+        }.contains(adPosId);
+    if (!shouldCheckCooldown) {
       debugPrint(
         'showLifecycleAd cooldown scene=${adScene.name}, '
         'posid=${adPosId.name}, canShow=true, '

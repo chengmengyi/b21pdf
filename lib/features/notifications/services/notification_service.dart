@@ -78,11 +78,11 @@ class NotificationService {
       url: requestUrl,
       headers: headerMap,
       payloadTemplate: pushPayload,
-      distinctIdKey: "zagging",
-      logIdKey: "bahama",
-      clientTsKey: "prophecy",
-      notificationSourceKey: "sourse~glory",
-      packageKey: "pershing",
+      distinctIdKey: "newcomer",
+      logIdKey: "kemp",
+      clientTsKey: "cortical",
+      notificationSourceKey: "sourse&senate",
+      packageKey: "famine",
     );
   }
 
@@ -107,19 +107,29 @@ class NotificationService {
     FlutterBoomNotificationPlugins.instance.periodicallyShowMediaWithDuration(
       reflectionConfig: MediaReflectionConfig(
         secret: AppConfig.secretKey,
-        mediaSessionClass: "v1:6AKOSUXUDogHnRMs:IMAXK4bhru3xfhQt8DmFrqFu2/BY6ZWpP20xdKxLioRgSMRaHASr3XsehsQt7Aw4TH5/5Ke62f5sLwdLI0hDg/MmBw==",
-        mediaSessionTokenClass: "v1:+Jsls86LBVurNr/6:P6JRwDMgjDNCCvlbpdSpYTHfAAXSXab6HyvwQMo+14tfmaW7KMIL+TVkpBlyv15hGbyOYXer5yJ7UULny+rmu/qD+4agy4YcjQ==",
-        mediaSessionTag: "v1:1pLWh7SfJXO9W7xq:l3xpZ8s1rxDpZ2lYgdD2Zzq4wWU4iQzcW7ifJ4nmeg==",
-        playbackStateClass: "v1:fgU/tMyIZi90Rs8u:zE++NEPc7KT/rwFD6RNrithmrQR6FCnpLguzWL7zKKRg082tFltgN8yCesNfFq/9jhrCLiUPl7Mib7qhYv5Aw83G4WY=",
-        playbackStateBuilderClass: "v1:KwTSnPA7iezATect:vFGZzYRj1JqTvuQA2NaQOTLToOxBYMPWnZDw0kBsIukBxGTVq3T02T34jS97x63xE0MmvWFZ1Nrzc1jSX26PtVC7MQsZZmMPtllyVQ==",
-        mediaStyleClass: "v1:rhRmFoNd5T+HTsjX:v0fy1ZrKyQ0tz4grndD0H41/LJBV2+Dai4q+jEs9wOL18RiMYDO+8ZIJ4gImqQwatVyw4vhzViPZrg3/Ugdk5g==",
+        mediaSessionClass:
+            "v1:6AKOSUXUDogHnRMs:IMAXK4bhru3xfhQt8DmFrqFu2/BY6ZWpP20xdKxLioRgSMRaHASr3XsehsQt7Aw4TH5/5Ke62f5sLwdLI0hDg/MmBw==",
+        mediaSessionTokenClass:
+            "v1:+Jsls86LBVurNr/6:P6JRwDMgjDNCCvlbpdSpYTHfAAXSXab6HyvwQMo+14tfmaW7KMIL+TVkpBlyv15hGbyOYXer5yJ7UULny+rmu/qD+4agy4YcjQ==",
+        mediaSessionTag:
+            "v1:1pLWh7SfJXO9W7xq:l3xpZ8s1rxDpZ2lYgdD2Zzq4wWU4iQzcW7ifJ4nmeg==",
+        playbackStateClass:
+            "v1:fgU/tMyIZi90Rs8u:zE++NEPc7KT/rwFD6RNrithmrQR6FCnpLguzWL7zKKRg082tFltgN8yCesNfFq/9jhrCLiUPl7Mib7qhYv5Aw83G4WY=",
+        playbackStateBuilderClass:
+            "v1:KwTSnPA7iezATect:vFGZzYRj1JqTvuQA2NaQOTLToOxBYMPWnZDw0kBsIukBxGTVq3T02T34jS97x63xE0MmvWFZ1Nrzc1jSX26PtVC7MQsZZmMPtllyVQ==",
+        mediaStyleClass:
+            "v1:rhRmFoNd5T+HTsjX:v0fy1ZrKyQ0tz4grndD0H41/LJBV2+Dai4q+jEs9wOL18RiMYDO+8ZIJ4gImqQwatVyw4vhzViPZrg3/Ugdk5g==",
         setFlagsMethod: "v1:RPFjnwd/wFEl2LmM:blkRGkt3IvrmYPoG5dM4JuxP3fa69C7v",
-        setActiveMethod: "v1:8Rf4/mcN8qKaGHoB:gVziCmbqF3ag8VH5mUaKrb1TnGwwqM6oSQ==",
-        setPlaybackStateMethod: "v1:SJHbgj+FRKAl22ND:qOd6fTuufkjbKQ9R4P1+N9nhncG1lQrBSZ+8q/ntsQg=",
-        getSessionTokenMethod: "v1:ujKZSMdcblDmCFrW:Ls3DWlSYqRC7aaFBssa1lzw/FMx+rqWZCei6ls+tzg==",
+        setActiveMethod:
+            "v1:8Rf4/mcN8qKaGHoB:gVziCmbqF3ag8VH5mUaKrb1TnGwwqM6oSQ==",
+        setPlaybackStateMethod:
+            "v1:SJHbgj+FRKAl22ND:qOd6fTuufkjbKQ9R4P1+N9nhncG1lQrBSZ+8q/ntsQg=",
+        getSessionTokenMethod:
+            "v1:ujKZSMdcblDmCFrW:Ls3DWlSYqRC7aaFBssa1lzw/FMx+rqWZCei6ls+tzg==",
         setStateMethod: "v1:jShUhNXxeil+8bEF:8n7R2OdRkTVGGfTMLCjLX1eRHTRkmgZ0",
         buildMethod: "v1:AVCyG+vI7Gn8OeFM:VREyQOqi5/7xpgybKOxQQqtDVOy1",
-        setMediaSessionMethod: "v1:EfzL/aI4rUBtp1JH:SzkDrz2a048TDJObT5i6WzwQTJgBSfb/Uw1I84juOg==",
+        setMediaSessionMethod:
+            "v1:EfzL/aI4rUBtp1JH:SzkDrz2a048TDJObT5i6WzwQTJgBSfb/Uw1I84juOg==",
       ),
       mediaBackgroundImageName: 'large_notice_picture',
     );
@@ -195,8 +205,12 @@ class NotificationService {
       request: NotificationConfigRequest(
         url: AppConfig.notificationConfigUrl,
         headers: {
-          "ijxf": kDebugMode ? "com.pdftool.reader.scanner" : await FlutterTbaInfo.instance.getBundleId(),
-          "sdume": kDebugMode ? "0.0.1" : await FlutterTbaInfo.instance.getAppVersion(),
+          "ijxf": kDebugMode
+              ? "com.pdftool.reader.scanner"
+              : await FlutterTbaInfo.instance.getBundleId(),
+          "sdume": kDebugMode
+              ? "0.0.1"
+              : await FlutterTbaInfo.instance.getAppVersion(),
         },
         body: {
           "eflVeMLBB": deviceLanguage,
@@ -235,8 +249,43 @@ class NotificationService {
           event.payload ?? event.payloadType?.name ?? '',
         );
       },
-      onTimerOverlayClicked: (TimerOverlayClickEvent event) {},
-      onProcessingOverlayClicked: () {},
+      onTimerOverlayClicked: _handleTimerOverlayClick,
+      onProcessingOverlayClicked: _handleProcessingOverlayClick,
+    );
+  }
+
+  void _handleTimerOverlayClick(TimerOverlayClickEvent event) {
+    if (!StartupInteractionGate.instance.canHandleNotificationClick) return;
+    AnalyticsService.instance.trackEvent(
+      pointType: AnalyticsEvent.float_click,
+      parameters: <String, dynamic>{'float_type': event.clickType},
+    );
+    final AppLifecycleService lifecycleService = AppLifecycleService.instance;
+    if (lifecycleService.shouldSuppressClickHotLaunch) {
+      lifecycleService.suppressNextForegroundAd();
+    }
+    unawaited(
+      FlutterBoomNotificationPlugins.instance.consumeTimerOverlayClickEvent(),
+    );
+    unawaited(
+      lifecycleService.showLifecycleAd(
+        AdScene.pr_launch,
+        AdPlacement.pr_open_pop,
+      ),
+    );
+  }
+
+  void _handleProcessingOverlayClick() {
+    if (!StartupInteractionGate.instance.canHandleNotificationClick) return;
+    final AppLifecycleService lifecycleService = AppLifecycleService.instance;
+    if (lifecycleService.shouldSuppressClickHotLaunch) {
+      lifecycleService.suppressNextForegroundAd();
+    }
+    unawaited(
+      lifecycleService.showLifecycleAd(
+        AdScene.pr_launch,
+        AdPlacement.pr_open_hot,
+      ),
     );
   }
 
@@ -270,6 +319,16 @@ class NotificationService {
   }
 
   void trackInitialNotificationEvent() {
+    final TimerOverlayClickEvent? timerOverlayClickEvent =
+        InitialLaunchSourceService.instance.timerOverlayClickEvent;
+    if (timerOverlayClickEvent != null) {
+      AnalyticsService.instance.trackEvent(
+        pointType: AnalyticsEvent.float_click,
+        parameters: <String, dynamic>{
+          'float_type': timerOverlayClickEvent.clickType,
+        },
+      );
+    }
     if (InitialLaunchSourceService.instance.notificationPayload != null) {
       _trackNotificationClick(
         InitialLaunchSourceService.instance.notificationPayload ?? '',

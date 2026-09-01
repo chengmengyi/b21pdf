@@ -12,6 +12,7 @@ import 'package:b21pdf/features/notifications/services/notification_service.dart
 import 'package:b21pdf/core/storage/preferences/last_open_ad_close_time.dart';
 import 'package:flutter_app_lifecycle/app_state_observer.dart';
 import 'package:flutter_app_lifecycle/flutter_app_lifecycle.dart';
+import 'package:flutter_boom_notification_plugins/flutter_boom_notification_plugins.dart';
 import 'package:flutter_pdf_ad_plugins/flutter_pdf_ad_plugins.dart';
 
 class AppLifecycleService {
@@ -20,9 +21,12 @@ class AppLifecycleService {
   static final AppLifecycleService instance = AppLifecycleService._();
   int hotLaunchCooldownSeconds = 3;
   bool observerStarted = false, _appIsBack = false;
+  bool _appIsForeground = true;
+  bool _waitingForegroundLaunchSource = false;
   bool _suppressNextHotLaunch = false;
 
-  bool get shouldSuppressClickHotLaunch => _appIsBack;
+  bool get shouldSuppressClickHotLaunch =>
+      !_appIsForeground || _appIsBack || _waitingForegroundLaunchSource;
 
   void suppressNextForegroundAd() {
     _suppressNextHotLaunch = true;
@@ -64,10 +68,12 @@ class AppLifecycleService {
   }
 
   void _onAppBackgrounded() {
+    _appIsForeground = false;
     _appIsBack = true;
   }
 
   Future<void> _onAppForegrounded() async {
+    _appIsForeground = true;
     OverlayService.instance.closeTimerOverlay();
     if (!_appIsBack && !_suppressNextHotLaunch) {
       return;
@@ -78,10 +84,33 @@ class AppLifecycleService {
     if (!_appIsBack) {
       return;
     }
-    _appIsBack = false;
+    await Future<void>.delayed(const Duration(milliseconds: 120));
+    if (_consumeForegroundAdSuppression()) {
+      return;
+    }
+    if (!_appIsBack) {
+      return;
+    }
+
+    final bool openedFromTimerOverlay = await _waitForForegroundClickSource();
+    if (_consumeForegroundAdSuppression()) {
+      return;
+    }
+    if (!_appIsBack) {
+      return;
+    }
+
     unawaited(NotificationService.instance.trackPendingNotificationEvents());
     final LaunchSource? source = ActiveLaunchSourceService.instance
         .consumeLaunchSource();
+    if (_consumeForegroundAdSuppression()) {
+      return;
+    }
+    _appIsBack = false;
+    if (openedFromTimerOverlay) {
+      showLifecycleAd(AdScene.pr_launch, AdPlacement.pr_open_pop);
+      return;
+    }
     if (source == null) {
       showLifecycleAd(AdScene.pr_launch, AdPlacement.pr_open_hot);
       return;
@@ -91,6 +120,29 @@ class AppLifecycleService {
         return;
       case LaunchSourceType.quickAction:
         showLifecycleAd(AdScene.pr_exit, AdPlacement.unload_1);
+    }
+  }
+
+  Future<bool> _waitForForegroundClickSource() async {
+    _waitingForegroundLaunchSource = true;
+    try {
+      bool openedFromTimerOverlay = false;
+      try {
+        openedFromTimerOverlay =
+            await FlutterBoomNotificationPlugins.instance
+                .consumeTimerOverlayClickEvent() !=
+            null;
+      } catch (_) {}
+
+      for (int index = 0; index < 10; index++) {
+        if (_suppressNextHotLaunch) {
+          break;
+        }
+        await Future<void>.delayed(const Duration(milliseconds: 20));
+      }
+      return openedFromTimerOverlay;
+    } finally {
+      _waitingForegroundLaunchSource = false;
     }
   }
 
