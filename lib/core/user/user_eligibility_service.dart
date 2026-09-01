@@ -47,13 +47,13 @@ class UserEligibilityService {
       afAppId: "",
       distinctId: distinctId,
       clockUrl: AppConfig.clockEndpoint,
-      cloakWhiteKey: 'eurasia',
+      cloakWhiteKey: 'blest',
       cloakData: <String, dynamic>{
-        'pershing': await FlutterTbaInfo.instance.getBundleId(),
-        'span': Platform.isAndroid ? 'haggle' : 'not',
-        'andersen': await FlutterTbaInfo.instance.getAppVersion(),
-        'zagging': distinctId,
-        'prophecy': DateTime.now().millisecondsSinceEpoch,
+        'famine': await FlutterTbaInfo.instance.getBundleId(),
+        'gratuity': Platform.isAndroid ? 'attain' : 'ho',
+        'prolix': await FlutterTbaInfo.instance.getAppVersion(),
+        'newcomer': distinctId,
+        'cortical': DateTime.now().millisecondsSinceEpoch,
       },
       requestCallback: RequestCallback(
         requestAfCallback: RequestAfCallback(
@@ -128,7 +128,7 @@ class UserEligibilityService {
     FlutterPdfRiskControlPlugins.instance.initPdfRiskControl(
       riskConfigJson: riskConfig,
       ipConfig: FlutterPdfRiskControlIpConfig(
-        requestUrl: 'https://ip-prod.pdfreaderscanner.net/api/csnake',
+        requestUrl: AppConfig.riskUrl,
         requestData: <String, String>{
           'aape': await FlutterTbaInfo.instance.getAndroidId(),
         },

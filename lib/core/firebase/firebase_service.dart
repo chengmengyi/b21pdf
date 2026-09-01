@@ -85,13 +85,6 @@ class FirebaseService {
     if (riskConfig.isNotEmpty) {
       UserEligibilityService.instance.initializeRiskControl(riskConfig);
     }
-
-    final String overlayTimingConfig =
-        _remoteConfig?.getString('float_time') ?? '';
-    if (overlayTimingConfig.isNotEmpty) {
-      OverlayService.instance.updateTimerConfiguration(overlayTimingConfig);
-    }
-
     _initializeFacebook();
 
     final int koreanPushMode =

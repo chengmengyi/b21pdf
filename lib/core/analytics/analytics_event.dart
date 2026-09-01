@@ -79,7 +79,7 @@ enum AnalyticsEvent {
   pr_total_001_revenue,
   ad_impression_revenue,
   show_ad_no_cache,
-  quad,
+  lancelot,
   mambo,
   rating_pop_v,
   rating_pop_c,

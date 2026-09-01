@@ -177,7 +177,6 @@ class NotificationService {
     var languageXpe = LocaleSelected.readLanguage();
     if (languageXpe.isNotEmpty) {
       try {
-        //zh-CN
         var list = languageXpe.split("-");
         deviceLanguage = list.first;
         countryCode = list.last;
@@ -194,20 +193,15 @@ class NotificationService {
     return NotificationInitConfig(
       defaultConfig: defaultNotificationConfig,
       request: NotificationConfigRequest(
-        url: "https://prod.pdfutilitydocforge.com/LGZXGfupyG/HmtKKNYmqW/aARzBe",
+        url: AppConfig.notificationConfigUrl,
         headers: {
-          "imp": kDebugMode
-              ? "com.docforge.pdfutility"
-              : await FlutterTbaInfo.instance.getBundleId(),
-          // "imp":await FlutterTbaInfo.instance.getBundleId(),
-          "udz": kDebugMode
-              ? "0.0.1"
-              : await FlutterTbaInfo.instance.getAppVersion(),
+          "ijxf": kDebugMode ? "com.pdftool.reader.scanner" : await FlutterTbaInfo.instance.getBundleId(),
+          "sdume": kDebugMode ? "0.0.1" : await FlutterTbaInfo.instance.getAppVersion(),
         },
         body: {
-          "iSrc": deviceLanguage,
-          "DgTaa": await FlutterTbaInfo.instance.getDistinctId(),
-          "pnsKCAj": countryCode,
+          "eflVeMLBB": deviceLanguage,
+          "JFz": await FlutterTbaInfo.instance.getDistinctId(),
+          "HMCb": countryCode,
         },
       ),
       fieldMapping: jsonDecode(fieldMappingConfig),

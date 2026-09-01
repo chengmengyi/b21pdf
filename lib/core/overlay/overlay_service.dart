@@ -55,21 +55,6 @@ class OverlayService {
     );
   }
 
-  void updateTimerConfiguration(String configuration) {
-    try {
-      final Map<String, dynamic> json =
-          jsonDecode(configuration) as Map<String, dynamic>;
-      final int repeatMinutes = (json['repeatTime'] as num?)?.toInt() ?? 5;
-      final int maximumDailyCount = (json['maxCount'] as num?)?.toInt() ?? 999;
-      final int cooldownTime = (json['cdTime'] as num?)?.toInt() ?? 1;
-      _plugin.updateTimerOverlayInfo(
-        timerInterval: Duration(minutes: repeatMinutes),
-        oneDayMaxCount: maximumDailyCount,
-        cdTime: cooldownTime,
-      );
-    } catch (_) {}
-  }
-
   Future<bool> hasOverlayPermission() async {
     if (!Platform.isAndroid) return true;
     return _plugin.checkOverlayPermission();
